@@ -7,7 +7,7 @@ interface LabeledInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   type?: string;
   placeholder?: string;
-  multiline?: boolean; // ✅ Add this prop
+  multiline?: boolean; 
 }
 
 export const LabeledInput: React.FC<LabeledInputProps> = ({
@@ -16,7 +16,7 @@ export const LabeledInput: React.FC<LabeledInputProps> = ({
   onChange,
   type = 'text',
   placeholder,
-  multiline = false, // ✅ Default to false
+  multiline = false, 
 }) => {
   return (
     <Wrapper>

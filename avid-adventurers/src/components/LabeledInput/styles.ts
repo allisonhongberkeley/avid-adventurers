@@ -22,6 +22,7 @@ export const Input = styled.input`
   border: 1px solid black;
   border-radius: 0.5rem;
   font-size: 1rem;
+  font-family: inherit;
 
   &:focus {
     border-color: #333;
@@ -36,6 +37,7 @@ export const TextArea = styled.textarea`
   border: 1px solid black;
   border-radius: 0.5rem;
   font-size: 1rem;
+  font-family: inherit;
   resize: none;
 
   &:focus {
