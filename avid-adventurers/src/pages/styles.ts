@@ -1,0 +1,91 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+`;
+
+export const Title = styled.h1`
+  margin-bottom: 2rem;
+`;
+
+export const FormWrapper = styled.div`
+  width: 100%;
+  max-width: 350px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+
+export const ProfileImageWrapper = styled.label`
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  position: relative;
+
+  &:hover {
+    border-color: #888;
+  }
+`;
+
+export const ProfileImageInput = styled.input`
+  display: none;
+`;
+
+export const PlaceholderText = styled.span`
+  color: #888;
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  z-index: 1;
+`;
+
+export const ProfileImagePreview = styled.img`
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const FallbackText = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #888;
+  text-align: center;
+  font-size: 0.875rem;
+  pointer-events: none;
+`;
+
+
+export const Button = styled.button`
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s;
+  width: 100%;
+
+  &:hover {
+    background-color: #000000;
+    color: #ffffff;
+  }
+`;
