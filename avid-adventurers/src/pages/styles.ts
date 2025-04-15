@@ -71,10 +71,18 @@ export const FallbackText = styled.span`
   pointer-events: none;
 `;
 
+export const ButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  gap: 1rem;
+  width: 100%;
+`
 
-export const Button = styled.button`
-  margin-top: 1rem;
-  padding: 0.75rem 2rem;
+
+export const BackButton = styled.button`
+  flex: 1;
+  padding: 0.75rem;
   background-color: #ffffff;
   color: #000000;
   border: 1px solid #000000;
@@ -82,10 +90,26 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s;
-  width: 100%;
 
   &:hover {
     background-color: #000000;
     color: #ffffff;
+  }
+`;
+
+export const ContinueButton = styled.button`
+  flex: 2;
+  padding: 0.75rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #000000;
   }
 `;
