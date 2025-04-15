@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProfileImage} from '../../components/ProfileImage/ProfileImage';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
-import { Container, Title, FormWrapper, ProfileImageWrapper, ProfileImageInput, PlaceholderText, ProfileImagePreview, FallbackText, Button } from '../styles';
+import { Container, Title, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useOnboarding } from '../../utils/onboardingContext';
 
 const Profile: React.FC = () => {
@@ -12,6 +12,10 @@ const Profile: React.FC = () => {
     const handleContinue = () => {
       navigate('/onboarding/age');
     };
+
+    const handleBack = () => {
+      navigate('/');
+    }
 
     return (
     <Container>
@@ -35,7 +39,10 @@ const Profile: React.FC = () => {
         onChange={(e) => setCity(e.target.value)}
       />
 
-      <Button onClick={handleContinue}>Continue</Button>
+      <ButtonRow>
+        <BackButton onClick={handleBack}>Back</BackButton>
+        <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
+      </ButtonRow>
       </FormWrapper>
     </Container>
 )};
