@@ -4,9 +4,9 @@ import { ProfileImage} from '../../components/ProfileImage/ProfileImage';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
 import { Container, Title, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useOnboarding } from '../../utils/onboardingContext';
-import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
-const Age: React.FC = () => {
+
+const ProfileDisplay: React.FC = () => {
     const navigate = useNavigate();
     const { age, setAge, pronouns, setPronouns, funFact, setFunFact, profileImage, setProfileImage } = useOnboarding();
 
@@ -15,17 +15,19 @@ const Age: React.FC = () => {
     };
 
     const handleBack = () => {
-      navigate('/onboarding/profile');
+      navigate('/onboarding/age');
     }
 
     return (
     <Container>
+      <Title>Set up your profile</Title>
+
       <FormWrapper>
-        <Title>Set up your profile</Title>
         <ProfileImage
             profileImage={profileImage}
             setProfileImage={setProfileImage}
         />
+
         <LabeledInput
           label="Please enter your age:"
           placeholder="23"
@@ -44,7 +46,6 @@ const Age: React.FC = () => {
           value={funFact}
           onChange={(e) => setFunFact(e.target.value)}
         />
-        <ProgressBar totalSteps={3} currentStep={2} />
         <ButtonRow>
           <BackButton onClick={handleBack}>Back</BackButton>
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
@@ -53,4 +54,4 @@ const Age: React.FC = () => {
     </Container>
 )};
 
-export default Age;
+export default ProfileDisplay;

@@ -13,6 +13,7 @@ import TempChat from "./pages/TempChat";
 import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
+import ProfileDisplay from './pages/onboarding/ProfileDisplay';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/tempChat" element={<TempChat />} />
           <Route path="/tempProfile" element={<TempProfile />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/onboarding/profileDisplay" element={<ProfileDisplay />} />
         </Routes>
       </OnboardingProvider>
       <SurveyProvider>
