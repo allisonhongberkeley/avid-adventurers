@@ -19,30 +19,29 @@ const Profile: React.FC = () => {
 
     return (
     <Container>
-      <Title>Set up your profile</Title>
-
       <FormWrapper>
-      <ProfileImage
-          profileImage={profileImage}
-          setProfileImage={setProfileImage}
-      />
-      <LabeledInput
-        label="Please enter your first name:"
-        placeholder="Jane"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      <LabeledInput
-        label="Please enter the city you live in:"
-        placeholder="San Francisco"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
+        <Title>Set up your profile</Title>
+        <ProfileImage
+            profileImage={profileImage}
+            setProfileImage={setProfileImage}
+        />
+        <LabeledInput
+          label="Please enter your first name:"
+          placeholder="Jane"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <LabeledInput
+          label="Please enter the city you live in:"
+          placeholder="San Francisco"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
 
-      <ButtonRow>
-        <BackButton onClick={handleBack}>Back</BackButton>
-        <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
-      </ButtonRow>
+        <ButtonRow>
+          <BackButton onClick={handleBack}>Back</BackButton>
+          <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
+        </ButtonRow>
       </FormWrapper>
     </Container>
 )};

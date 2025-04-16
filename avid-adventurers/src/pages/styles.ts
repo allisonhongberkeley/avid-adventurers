@@ -9,6 +9,13 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: 2rem;
+  text-align: center;
+`;
+
+export const Subtitle = styled.p`
+  font-size: 1rem;
+  margin-top: 0;
+  align-self: flex-start;
 `;
 
 export const FormWrapper = styled.div`
@@ -17,6 +24,7 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 

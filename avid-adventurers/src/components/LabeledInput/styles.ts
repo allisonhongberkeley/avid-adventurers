@@ -19,7 +19,7 @@ export const Input = styled.input`
   width: 100%;
   box-sizing: border-box;
   padding: 0.75rem;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-family: inherit;
@@ -34,7 +34,7 @@ export const TextArea = styled.textarea`
   width: 100%;
   box-sizing: border-box;
   padding: 0.75rem;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-family: inherit;

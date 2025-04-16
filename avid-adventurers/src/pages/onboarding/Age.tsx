@@ -11,7 +11,7 @@ const Age: React.FC = () => {
     const { age, setAge, pronouns, setPronouns, funFact, setFunFact, profileImage, setProfileImage } = useOnboarding();
 
     const handleContinue = () => {
-      navigate('/onboarding/age');
+      navigate('/onboarding/interests');
     };
 
     const handleBack = () => {
@@ -20,9 +20,8 @@ const Age: React.FC = () => {
 
     return (
     <Container>
-      <Title>Set up your profile</Title>
-
       <FormWrapper>
+        <Title>Set up your profile</Title>
         <ProfileImage
             profileImage={profileImage}
             setProfileImage={setProfileImage}
