@@ -6,7 +6,7 @@ import { Container, Title, FormWrapper, ButtonRow, BackButton, ContinueButton } 
 import { useOnboarding } from '../../utils/onboardingContext';
 
 
-const Age: React.FC = () => {
+const ProfileDisplay: React.FC = () => {
     const navigate = useNavigate();
     const { age, setAge, pronouns, setPronouns, funFact, setFunFact, profileImage, setProfileImage } = useOnboarding();
 
@@ -15,7 +15,7 @@ const Age: React.FC = () => {
     };
 
     const handleBack = () => {
-      navigate('/onboarding/profile');
+      navigate('/onboarding/age');
     }
 
     return (
@@ -54,4 +54,4 @@ const Age: React.FC = () => {
     </Container>
 )};
 
-export default Age;
+export default ProfileDisplay;
