@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CardWrapper, EventImage, EventTitle, EventDetail, Interested} from './styles';
+import { CardWrapper, EventImage, EventTitle, EventDetail, Interested } from './styles';
 
 interface EventBoxProps {
   time: string;
@@ -14,15 +14,15 @@ interface EventBoxProps {
 }
 
 export const EventBox: React.FC<EventBoxProps> = ({
-    time,
-    weekday,
-    date,
-    title,
-    imageUrl,
-    location,
-    interestedCount,
-    link,
-  }) => {
+  time,
+  weekday,
+  date,
+  title,
+  imageUrl,
+  location,
+  interestedCount,
+  link,
+}) => {
   return (
     <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
       <CardWrapper>
@@ -35,3 +35,4 @@ export const EventBox: React.FC<EventBoxProps> = ({
     </Link>
   );
 };
+
