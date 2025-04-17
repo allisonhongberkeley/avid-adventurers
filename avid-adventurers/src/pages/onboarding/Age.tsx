@@ -4,7 +4,7 @@ import { ProfileImage} from '../../components/ProfileImage/ProfileImage';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
 import { Container, Title, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useOnboarding } from '../../utils/onboardingContext';
-import ProgressBar from '../../components/ProgressBar';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 const Age: React.FC = () => {
     const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { InputDropdown } from '../../components/InputDropdown/InputDropdown';
 import { SearchInput } from '../../components/InterestsSearchInput/InterestsSearchInput'; 
 import { Container, Title, Subtitle, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useOnboarding } from '../../utils/onboardingContext';
-import ProgressBar from '../../components/ProgressBar';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 const socialOptions = ['concerts', 'karaoke', 'board games', 'crocheting', 'hiking', 'sightseeing', 'clubbing'];
 const sportsOptions =['surfing', 'swimming', 'basketball', 'paddleboarding', 'skateboarding', 'hiking', 'pickleball'];
