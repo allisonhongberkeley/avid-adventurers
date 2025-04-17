@@ -9,7 +9,7 @@ import {
 
 interface ProfileImageUploadProps {
   profileImage: File | null;
-  setProfileImage: (file: File) => void;
+  setProfileImage?: (file: File) => void;
 }
 
 export const ProfileImage: React.FC<ProfileImageUploadProps> = ({
@@ -19,6 +19,7 @@ export const ProfileImage: React.FC<ProfileImageUploadProps> = ({
   const [imageError, setImageError] = useState(false);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!setProfileImage) return;
     if (e.target.files && e.target.files[0]) {
       setProfileImage(e.target.files[0]);
       setImageError(false);
