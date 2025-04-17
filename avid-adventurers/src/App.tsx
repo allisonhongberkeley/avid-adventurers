@@ -5,6 +5,11 @@ import Interests from './pages/onboarding/Interests';
 import { OnboardingProvider } from './utils/onboardingContext';
 import Events from './pages/onboarding/Events';
 
+import TempHome from "./pages/onboarding/TempHome";
+import TempBucket from "./pages/onboarding/TempBucket";
+import TempChat from "./pages/onboarding/TempChat";
+import TempProfile from "./pages/onboarding/TempProfile";
+
 function App() {
   return (
     <Router>
@@ -13,6 +18,10 @@ function App() {
           <Route path="/onboarding/profile" element={<Profile />} />
           <Route path="/onboarding/age" element={<Age />} />
           <Route path="/onboarding/interests" element={<Interests />} />
+          <Route path="/onboarding/tempHome" element={<TempHome />} />
+          <Route path="/onboarding/tempBucket" element={<TempBucket />} />
+          <Route path="/onboarding/tempChat" element={<TempChat />} />
+          <Route path="/onboarding/tempProfile" element={<TempProfile />} />
           <Route path="/onboarding/events" element={<Events />} />
         </Routes>
       </OnboardingProvider>
