@@ -4,6 +4,7 @@ import { ProfileImage} from '../../components/ProfileImage/ProfileImage';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
 import { Container, Title, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useOnboarding } from '../../utils/onboardingContext';
+import ProgressBar from '../../components/ProgressBar';
 
 const Profile: React.FC = () => {
     const navigate = useNavigate();
@@ -37,7 +38,7 @@ const Profile: React.FC = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-
+        <ProgressBar totalSteps={3} currentStep={1} />
         <ButtonRow>
           <BackButton onClick={handleBack}>Back</BackButton>
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>

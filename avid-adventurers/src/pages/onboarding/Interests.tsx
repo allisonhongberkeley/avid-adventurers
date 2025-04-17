@@ -4,6 +4,7 @@ import { InputDropdown } from '../../components/InputDropdown/InputDropdown';
 import { SearchInput } from '../../components/InterestsSearchInput/InterestsSearchInput'; 
 import { Container, Title, Subtitle, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useOnboarding } from '../../utils/onboardingContext';
+import ProgressBar from '../../components/ProgressBar';
 
 const socialOptions = ['concerts', 'karaoke', 'board games', 'crocheting', 'hiking', 'sightseeing', 'clubbing'];
 const sportsOptions =['surfing', 'swimming', 'basketball', 'paddleboarding', 'skateboarding', 'hiking', 'pickleball'];
@@ -88,7 +89,6 @@ const Interests: React.FC = () => {
     <Container>
       <FormWrapper>
         <Title>Select the activities that interest you</Title>
-
         <Subtitle>Key words of search</Subtitle>
         <SearchInput
             selected={customTags}
@@ -97,33 +97,33 @@ const Interests: React.FC = () => {
 
         <Subtitle>Categories</Subtitle>
         <InputDropdown
-        label="Sports & Outdoor"
-        options={sportsOptions}
-        selected={sportsTags}
-        setSelected={setSportsTags}
+          label="Sports & Outdoor"
+          options={sportsOptions}
+          selected={sportsTags}
+          setSelected={setSportsTags}
         />
 
         <InputDropdown
-        label="Social"
-        options={socialOptions}
-        selected={socialTags}
-        setSelected={setSocialTags}
+          label="Social"
+          options={socialOptions}
+          selected={socialTags}
+          setSelected={setSocialTags}
         />
 
         <InputDropdown
-        label="Food"
-        options={foodOptions}
-        selected={foodTags}
-        setSelected={setFoodTags}
+          label="Food"
+          options={foodOptions}
+          selected={foodTags}
+          setSelected={setFoodTags}
         />
 
         <InputDropdown
-        label="Arts & Crafts"
-        options={artsAndCraftsOptions}
-        selected={artsAndCraftsTags}
-        setSelected={setArtsAndCraftsTags}
+          label="Arts & Crafts"
+          options={artsAndCraftsOptions}
+          selected={artsAndCraftsTags}
+          setSelected={setArtsAndCraftsTags}
         />
-        
+        <ProgressBar totalSteps={3} currentStep={3} />
         <ButtonRow>
           <BackButton onClick={handleBack}>Back</BackButton>
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
