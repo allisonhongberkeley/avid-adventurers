@@ -1,8 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { NavBar} from '../../components/NavBar/NavBar';
-import { Container, FormWrapper, Title } from '../styles';
-import { useOnboarding } from '../../utils/onboardingContext';
+import { NavBar} from '../components/NavBar/NavBar';
+import { Container, FormWrapper, Title } from './styles';
 
 const TempProfile: React.FC = () => {
     return (

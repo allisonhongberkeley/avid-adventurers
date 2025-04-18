@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NavBar} from '../../components/NavBar/NavBar';
-import { Container, Title, } from '../styles';
-import { useOnboarding } from '../../utils/onboardingContext';
+import { NavBar} from '../components/NavBar/NavBar';
+import { Container, Title, } from './styles';
+import { useOnboarding } from '../utils/onboardingContext';
 
 const TempHome: React.FC = () => {
     return (
