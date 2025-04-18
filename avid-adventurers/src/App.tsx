@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from './pages/onboarding/Profile';
 import Age from './pages/onboarding/Age';
 import Interests from './pages/onboarding/Interests';
+import Congrats from './pages/survey/Congrats';
+import Rate from './pages/survey/Rate';
 import { OnboardingProvider } from './utils/onboardingContext';
 import Events from './pages/onboarding/Events';
 
@@ -9,6 +11,8 @@ import TempHome from "./pages/TempHome";
 import TempBucket from "./pages/TempBucket";
 import TempChat from "./pages/TempChat";
 import TempProfile from "./pages/TempProfile";
+import { SurveyProvider } from './utils/surveyContext';
+
 
 function App() {
   return (
@@ -25,6 +29,12 @@ function App() {
           <Route path="/events" element={<Events />} />
         </Routes>
       </OnboardingProvider>
+      <SurveyProvider>
+        <Routes>
+          <Route path="/survey/congrats" element={<Congrats />} />
+          <Route path="/survey/rate" element={<Rate />} />
+        </Routes>
+      </SurveyProvider>
     </Router>
   );
 }
