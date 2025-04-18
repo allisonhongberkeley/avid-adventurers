@@ -1,41 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Label } from '../../components/Label/Label';
 import Rating from '../../components/Rating/Rating';
-import { Container, Title, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
+import { Container, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useSurvey } from '../../utils/surveyContext';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
 
 
 const Rate: React.FC = () => {
     const navigate = useNavigate();
-    const [rating, setRating] = useState(0);
-    const [experience, setExperience] = useState('');
-
-    useEffect(() => {
-      const savedRating = localStorage.getItem('rating');
-      const savedExperience = localStorage.getItem('experience');
-      
-      if (savedRating) {
-        setRating(Number(savedRating));
-      }
-      
-      if (savedExperience) {
-        setExperience(savedExperience); 
-      }
-    }, []);
-
-    useEffect(() => {
-      if (rating) {
-        localStorage.setItem('rating', rating.toString()); 
-      }
-    }, [rating]); 
-
-    useEffect(() => {
-      if (experience) {
-        localStorage.setItem('experience', experience); 
-      }
-    }, [experience]);
+    const { rating, setRating, experience, setExperience } = useSurvey();
 
     const handleContinue = () => {
       navigate('/survey/rated');

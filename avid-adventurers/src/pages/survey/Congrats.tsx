@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Label } from '../../components/Label/Label';
-import { Container, Title, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
+import { BackgroundWrapper, Container, FormWrapper, ButtonRow, ContinueButton } from '../styles';
 import { useSurvey } from '../../utils/surveyContext';
 
 
@@ -13,18 +13,8 @@ const Congrats: React.FC = () => {
       navigate('/survey/rate');
     };
 
-    const pageStyle = {
-        backgroundImage: "url('https://cdn.pixabay.com/animation/2024/05/02/07/43/07-43-00-535_512.gif')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat !important',
-        height: '100vh', 
-        zIndex: '-1',
-    };
-
     return (
-    <div style={pageStyle}>
+    <BackgroundWrapper>
         <Container>
         <FormWrapper>
             <Label
@@ -37,7 +27,7 @@ const Congrats: React.FC = () => {
             </ButtonRow>
         </FormWrapper>
         </Container>
-    </div>
+    </BackgroundWrapper>
 )};
 
 export default Congrats;

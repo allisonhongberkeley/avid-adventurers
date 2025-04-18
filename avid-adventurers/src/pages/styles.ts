@@ -121,3 +121,13 @@ export const ContinueButton = styled.button`
     color: #000000;
   }
 `;
+
+export const BackgroundWrapper = styled.div`
+  background-image: url('https://cdn.pixabay.com/animation/2024/05/02/07/43/07-43-00-535_512.gif');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100vh;
+  z-index: -1;
+`;

@@ -8,6 +8,8 @@ interface SurveyData {
   activity: string;
   rating: number;
   setRating: (rating: number) => void;
+  experience: string;
+  setExperience: (experience: string) => void;
   updateInterests: (interests: string[]) => void;
   setProfileImage: (file: File | null) => void;
 }
@@ -29,6 +31,7 @@ export const SurveyProvider = ({ children }: { children: ReactNode }) => {
     const [interests, setInterests] = useState<string[]>(['paddleboarding', 'skateboarding', 'sailing', 'hiking', 'coffee', 'wine tasting', 'concerts']); // current user's interests
     const activity = 'skateboarding';
     const [rating, setRating] = useState<number>(0);
+    const [experience, setExperience] = useState<string>('');
   
     const updateInterests = (newInterests: string[]) => {
       setInterests((prev) => Array.from(new Set([...prev, ...newInterests])));
@@ -44,6 +47,8 @@ export const SurveyProvider = ({ children }: { children: ReactNode }) => {
           activity,
           rating,
           setRating,
+          experience,
+          setExperience,
           updateInterests,
           setProfileImage,
         }}
