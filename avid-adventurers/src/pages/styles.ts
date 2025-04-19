@@ -12,6 +12,11 @@ export const Title = styled.h1`
   text-align: center;
 `;
 
+export const Title2 = styled.h2`
+  margin-bottom: 2rem;
+  text-align: center;
+`;
+
 export const Subtitle = styled.p`
   font-size: 1rem;
   margin-top: 0;
@@ -20,13 +25,21 @@ export const Subtitle = styled.p`
 
 export const FormWrapper = styled.div`
   width: 100%;
-  max-width: 350px; 
+  max-width: 400px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
+export const FormWrapperLeft = styled.div`
+  width: 100%;
+  max-width: 400px; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+`;
 
 export const ProfileImageWrapper = styled.label`
   width: 120px;
@@ -131,3 +144,29 @@ export const BackgroundWrapper = styled.div`
   height: 100vh;
   z-index: -1;
 `;
+
+export const ScrollContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 16px;
+  width: 98%;
+  box-sizing: border-box;
+  scroll-snap-type: x mandatory;
+
+  & > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+  }
+`;
+

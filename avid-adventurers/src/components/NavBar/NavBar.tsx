@@ -7,7 +7,7 @@ export const NavBar: React.FC = () => {
 
   return (
     <NavWrapper>
-      <OptionWrapper onClick={() => navigate("/tempHome")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/Home")} style={{ cursor: 'pointer' }}>
         <NavText>Home</NavText>
         <Icon src="/Home.png" alt="home page icon" />
       </OptionWrapper>

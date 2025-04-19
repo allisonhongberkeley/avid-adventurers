@@ -10,7 +10,7 @@ export const NavWrapper = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
 `;
 
 export const OptionWrapper = styled.div`
