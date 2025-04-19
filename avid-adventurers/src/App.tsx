@@ -7,7 +7,7 @@ import ProfileDisplay from './pages/onboarding/ProfileDisplay/ProfileDisplay';
 import Congrats from './pages/survey/Congrats';
 import Rate from './pages/survey/Rate';
 import { OnboardingProvider } from './utils/onboardingContext';
-import Events from './pages/onboarding/Events';
+import Events from './pages/Home';
 
 import TempHome from "./pages/TempHome";
 import TempBucket from "./pages/TempBucket";
@@ -16,6 +16,11 @@ import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
 import ChatPage from './pages/ChatPage/ChatPage';
+import Sunset from "./pages/events/Sunset";
+import Yoga from "./pages/events/Yoga";
+import Arizmendi from "./pages/events/Arizmendi";
+import Sail from "./pages/events/Sail";
+
 
 function App() {
   return (
@@ -32,6 +37,11 @@ function App() {
           <Route path="/tempProfile" element={<TempProfile />} />
           <Route path="/events" element={<Events />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/home" element={<Events />} />
+          <Route path="/events/sunset" element={<Sunset />} />
+          <Route path="/events/yoga" element={<Yoga />} />
+          <Route path="/events/arizmendi" element={<Arizmendi />} />
+          <Route path="/events/sail" element={<Sail />} />          
         </Routes>
       </OnboardingProvider>
       <SurveyProvider>
