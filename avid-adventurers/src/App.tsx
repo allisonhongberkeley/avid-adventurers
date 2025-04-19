@@ -5,13 +5,18 @@ import Interests from './pages/onboarding/Interests';
 import Congrats from './pages/survey/Congrats';
 import Rate from './pages/survey/Rate';
 import { OnboardingProvider } from './utils/onboardingContext';
-import Events from './pages/onboarding/Events';
+import Events from './pages/Home';
 
 import TempHome from "./pages/TempHome";
 import TempBucket from "./pages/TempBucket";
 import TempChat from "./pages/TempChat";
 import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
+
+import Sunset from "./pages/events/Sunset";
+import Yoga from "./pages/events/Yoga";
+import Arizmendi from "./pages/events/Arizmendi";
+import Sail from "./pages/events/Sail";
 
 
 function App() {
@@ -22,11 +27,14 @@ function App() {
           <Route path="/onboarding/profile" element={<Profile />} />
           <Route path="/onboarding/age" element={<Age />} />
           <Route path="/onboarding/interests" element={<Interests />} />
-          <Route path="/tempHome" element={<TempHome />} />
           <Route path="/tempBucket" element={<TempBucket />} />
           <Route path="/tempChat" element={<TempChat />} />
           <Route path="/tempProfile" element={<TempProfile />} />
-          <Route path="/events" element={<Events />} />
+          <Route path="/home" element={<Events />} />
+          <Route path="/events/sunset" element={<Sunset />} />
+          <Route path="/events/yoga" element={<Yoga />} />
+          <Route path="/events/arizmendi" element={<Arizmendi />} />
+          <Route path="/events/sail" element={<Sail />} />          
         </Routes>
       </OnboardingProvider>
       <SurveyProvider>
