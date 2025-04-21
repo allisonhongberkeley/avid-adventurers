@@ -5,6 +5,7 @@ import Interests from './pages/onboarding/Interests';
 import Congrats from './pages/survey/Congrats';
 import Rate from './pages/survey/Rate';
 import { OnboardingProvider } from './utils/onboardingContext';
+<<<<<<< HEAD
 import Events from './pages/onboarding/Events';
 
 import TempHome from "./pages/TempHome";
@@ -14,6 +15,9 @@ import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
 import ProfileDisplay from './pages/onboarding/ProfileDisplay';
+=======
+import ProfileDisplay from './pages/onboarding/ProfileDisplay/ProfileDisplay';
+>>>>>>> 737bf9e (refactor: Integrate readOnly mode into ProfileImage and separate ProfileDisplay styles)
 
 function App() {
   return (
