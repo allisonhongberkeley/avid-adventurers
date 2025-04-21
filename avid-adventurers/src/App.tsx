@@ -5,7 +5,6 @@ import Interests from './pages/onboarding/Interests';
 import Congrats from './pages/survey/Congrats';
 import Rate from './pages/survey/Rate';
 import { OnboardingProvider } from './utils/onboardingContext';
-<<<<<<< HEAD
 import Events from './pages/onboarding/Events';
 
 import TempHome from "./pages/TempHome";
@@ -14,10 +13,8 @@ import TempChat from "./pages/TempChat";
 import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
-import ProfileDisplay from './pages/onboarding/ProfileDisplay';
-=======
 import ProfileDisplay from './pages/onboarding/ProfileDisplay/ProfileDisplay';
->>>>>>> 737bf9e (refactor: Integrate readOnly mode into ProfileImage and separate ProfileDisplay styles)
+import ChatPage from './pages/onboarding/ChatPage/ChatPage';
 
 function App() {
   return (
@@ -33,6 +30,7 @@ function App() {
           <Route path="/tempProfile" element={<TempProfile />} />
           <Route path="/events" element={<Events />} />
           <Route path="/onboarding/profileDisplay" element={<ProfileDisplay />} />
+          <Route path="/onboarding/chat" element={<ChatPage />} />
         </Routes>
       </OnboardingProvider>
       <SurveyProvider>
