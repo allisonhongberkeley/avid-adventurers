@@ -24,13 +24,13 @@ function App() {
           <Route path="/onboarding/profile" element={<Profile />} />
           <Route path="/onboarding/age" element={<Age />} />
           <Route path="/onboarding/interests" element={<Interests />} />
+          <Route path="/onboarding/profileDisplay" element={<ProfileDisplay />} />
           <Route path="/tempHome" element={<TempHome />} />
           <Route path="/tempBucket" element={<TempBucket />} />
           <Route path="/tempChat" element={<TempChat />} />
           <Route path="/tempProfile" element={<TempProfile />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/onboarding/profileDisplay" element={<ProfileDisplay />} />
-          <Route path="/onboarding/chat" element={<ChatPage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Routes>
       </OnboardingProvider>
       <SurveyProvider>
