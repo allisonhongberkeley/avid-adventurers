@@ -5,32 +5,36 @@ export const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh; // Use 100vh to fill viewport height strictly
-  max-width: 414px; // Maintain simulated width
+  max-width: 350px; 
   margin: auto; // Keep centering
-  border: 1px solid #ccc; // Keep border
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Keep shadow
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Keep shadow
   background-color: #ffffff; // White background like Profile
-  // overflow: hidden; // Remove this, scrolling is handled by MessageArea
 `;
 
 // Header section
 export const Header = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px 15px; // Revert padding slightly
   background-color: #ffffff;
   border-bottom: 1px solid #eee;
   flex-shrink: 0;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.16);
+  z-index: 999;
 
   // Make back arrow larger and give it more space
   &::before {
     content: '< ';
-    font-size: 1.8rem; // Increase font size significantly
+    font-size: 1.8rem;
     font-weight: bold;
-    margin-right: 15px; // Increase spacing after arrow
     cursor: pointer;
-    width: auto; // Let width be auto
-    padding: 5px; // Add padding for easier clicking
+    padding: 5px;
+    position: absolute;
+    left: 15px; // Same as padding
+    top: 50%;
+    transform: translateY(-50%);
   }
 `;
 
