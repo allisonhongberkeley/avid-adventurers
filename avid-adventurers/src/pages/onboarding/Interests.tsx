@@ -4,30 +4,8 @@ import { InputDropdown } from '../../components/InputDropdown/InputDropdown';
 import { SearchInput } from '../../components/InterestsSearchInput/InterestsSearchInput'; 
 import { Container, Title, Subtitle, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useOnboarding } from '../../utils/onboardingContext';
+import { socialOptions, sportsOptions, foodOptions, artsAndCraftsOptions } from '../../utils/Interests';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
-
-const socialOptions = ['concerts', 'karaoke', 'board games', 'crocheting', 'hiking', 'sightseeing', 'clubbing'];
-const sportsOptions =['surfing', 'swimming', 'basketball', 'paddleboarding', 'skateboarding', 'hiking', 'pickleball'];
-const foodOptions = [
-    'japanese',
-    'mexican',
-    'italian',
-    'korean',
-    'Thai',
-    'indian',
-    'mediterranean',
-    'chinese',
-    'vietnamese',
-    'ethiopian'
-  ];
-const artsAndCraftsOptions = [
-    'painting',
-    'pottery',
-    'scrapbooking',
-    'jewelry making',
-    'origami',
-    'calligraphy'
-  ];
 
 
 const Interests: React.FC = () => {
@@ -78,7 +56,7 @@ const Interests: React.FC = () => {
       }, [sportsTags, socialTags, foodTags, artsAndCraftsTags, setInterests]);
 
     const handleContinue = () => {
-        navigate('/onboarding/interests');
+        navigate('/onboarding/profileDisplay');
       };
 
     const handleBack = () => {
@@ -123,7 +101,7 @@ const Interests: React.FC = () => {
           selected={artsAndCraftsTags}
           setSelected={setArtsAndCraftsTags}
         />
-        <ProgressBar totalSteps={3} currentStep={3} />
+        <ProgressBar totalSteps={3} currentStep={2} />
         <ButtonRow>
           <BackButton onClick={handleBack}>Back</BackButton>
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>

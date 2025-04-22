@@ -10,10 +10,7 @@ import {
 interface ProfileImageProps {
   profileImage: File | null;
   setProfileImage?: (file: File) => void;
-<<<<<<< HEAD
-=======
   readOnly?: boolean;
->>>>>>> 737bf9e (refactor: Integrate readOnly mode into ProfileImage and separate ProfileDisplay styles)
 }
 
 export const ProfileImage: React.FC<ProfileImageProps> = ({
@@ -24,12 +21,7 @@ export const ProfileImage: React.FC<ProfileImageProps> = ({
   const [imageError, setImageError] = useState(false);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-<<<<<<< HEAD
-    if (!setProfileImage) return;
-    if (e.target.files && e.target.files[0]) {
-=======
     if (!readOnly && setProfileImage && e.target.files && e.target.files[0]) {
->>>>>>> 737bf9e (refactor: Integrate readOnly mode into ProfileImage and separate ProfileDisplay styles)
       setProfileImage(e.target.files[0]);
       setImageError(false);
     }

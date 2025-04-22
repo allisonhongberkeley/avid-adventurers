@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from './pages/onboarding/Profile';
 import Age from './pages/onboarding/Age';
 import Interests from './pages/onboarding/Interests';
+import ProfileDisplay from './pages/onboarding/ProfileDisplay/ProfileDisplay';
+
 import Congrats from './pages/survey/Congrats';
 import Rate from './pages/survey/Rate';
 import { OnboardingProvider } from './utils/onboardingContext';
@@ -13,8 +15,7 @@ import TempChat from "./pages/TempChat";
 import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
-import ProfileDisplay from './pages/onboarding/ProfileDisplay/ProfileDisplay';
-import ChatPage from './pages/onboarding/ChatPage/ChatPage';
+import ChatPage from './pages/ChatPage/ChatPage';
 
 function App() {
   return (

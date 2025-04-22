@@ -1,56 +1,58 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ProfileImage } from '../../../components/ProfileImage/ProfileImage'; // Use the modified ProfileImage
-import { Container, FormWrapper } from '../../styles'; // Adjusted path
-import { useOnboarding } from '../../../utils/onboardingContext'; // Adjusted path
-// Import styles from the new local file
+import { ProfileImage } from '../../../components/ProfileImage/ProfileImage'; 
+import { ButtonRow, BackButton, ContinueButton, Container, FormWrapper } from '../../styles'; 
+import { interestIcons } from '../../../utils/Interests';
+import { useOnboarding } from '../../../utils/onboardingContext'; 
+import ProgressBar from '../../../components/ProgressBar/ProgressBar';
+
 import {
     WelcomeTitle,
     UserName,
     LocationText,
     InterestsList,
     InterestTag,
-    GetStartedButton
 } from './ProfileDisplayStyles';
 
 const ProfileDisplay: React.FC = () => {
     const navigate = useNavigate();
-    // Get only needed props. setProfileImage is not needed for readOnly mode.
-    const { firstName, city, profileImage } = useOnboarding();
+    const { firstName, city, profileImage, interests } = useOnboarding();
 
-    const handleGetStarted = () => {
+    const handleContinue = () => {
         navigate('/dashboard');
     };
+
+    const handleBack = () => {
+      navigate('/onboarding/interests');
+    }
 
     return (
     <Container>
       <FormWrapper>
         <WelcomeTitle>Welcome to Meetropolis, {firstName}!</WelcomeTitle>
 
-        {/* Use the modified ProfileImage in readOnly mode */}
         <ProfileImage
           profileImage={profileImage}
-          readOnly={true} // Set to readOnly
+          readOnly={true} 
         />
 
         <UserName>{firstName}</UserName>
         <LocationText>
           <span>📍</span> {city}
         </LocationText>
-
         <InterestsList>
-          <InterestTag>🏄 paddleboarding</InterestTag>
-          <InterestTag>🛹 skateboarding</InterestTag>
-          <InterestTag>⛵ sailing</InterestTag>
-          <InterestTag>🏔 hiking</InterestTag>
-          <InterestTag>☕ coffee</InterestTag>
-          <InterestTag>🍷 wine tasting</InterestTag>
-          <InterestTag>🎵 concerts</InterestTag>
+          {interests.map((interest) => (
+            <InterestTag key={interest}>
+              {interestIcons[interest] ?? ''} {interest}
+            </InterestTag>
+          ))}
         </InterestsList>
 
-        <GetStartedButton onClick={handleGetStarted}>
-          Get Started!
-        </GetStartedButton>
+        <ProgressBar totalSteps={3} currentStep={3} />
+        <ButtonRow>
+          <BackButton onClick={handleBack}>Back</BackButton>
+          <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
+        </ButtonRow>
       </FormWrapper>
     </Container>
 )};
