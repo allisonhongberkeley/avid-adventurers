@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin-bottom: 1.5rem;
   width: 100%;
-  max-width: 350px;
+  max-width: 300px;
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;

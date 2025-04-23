@@ -1,37 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Label } from '../../components/Label/Label';
-import Rating from '../../components/Rating/Rating';
 import { Container, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useSurvey } from '../../utils/surveyContext';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
 
 
-const Rate: React.FC = () => {
+const Uninterested: React.FC = () => {
     const navigate = useNavigate();
-    const { rating, setRating, experience, setExperience } = useSurvey();
+    const { experience, setExperience } = useSurvey();
+
+    useEffect(() => {
+      setExperience('');
+    }, []);
 
     const handleContinue = () => {
-      navigate('/survey/rated');
+      navigate('/survey/confirmation');
     };
 
     const handleBack = () => {
-      navigate('/survey/congrats');
+      navigate('/survey/rated');
     }
-
-    const handleRatingChange = (newRating: number) => {
-      setRating(newRating);
-    };
 
     return (
     <Container>
       <FormWrapper>
-        <Label
-          label = "How did you like the experience?"
-        />
-        <Rating initialRating={rating} onRatingChange={handleRatingChange} />
         <LabeledInput
-          label="Why?"
+          label="Tell us what went wrong."
           placeholder="Type your thoughts here..."
           value={experience}
           multiline={true}
@@ -46,4 +40,4 @@ const Rate: React.FC = () => {
     );
   };
   
-  export default Rate;
+  export default Uninterested;
