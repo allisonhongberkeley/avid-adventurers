@@ -51,9 +51,10 @@ const Interests: React.FC = () => {
             ...socialTags,
             ...foodTags,
             ...artsAndCraftsTags,
+            ...customTags,
           ]);
         }
-      }, [sportsTags, socialTags, foodTags, artsAndCraftsTags, setInterests]);
+      }, [sportsTags, socialTags, foodTags, artsAndCraftsTags, customTags, setInterests]);
 
     const handleContinue = () => {
         navigate('/onboarding/profileDisplay');

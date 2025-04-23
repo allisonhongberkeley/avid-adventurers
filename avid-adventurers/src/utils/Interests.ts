@@ -1,4 +1,4 @@
-export const socialOptions = ['concerts', 'karaoke', 'board games', 'crocheting', 'hiking', 'sightseeing', 'clubbing'];
+export const socialOptions = ['concerts', 'karaoke', 'board games', 'crocheting', 'sightseeing', 'clubbing'];
 export const sportsOptions =['surfing', 'swimming', 'basketball', 'paddleboarding', 'skateboarding', 'hiking', 'pickleball'];
 export const foodOptions = [
     'japanese',
