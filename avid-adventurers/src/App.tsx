@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from './pages/onboarding/Profile';
 import Age from './pages/onboarding/Age';
 import Interests from './pages/onboarding/Interests';
+import ProfileDisplay from './pages/onboarding/ProfileDisplay/ProfileDisplay';
 import Congrats from './pages/survey/Congrats';
 import Rate from './pages/survey/Rate';
 import { OnboardingProvider } from './utils/onboardingContext';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/onboarding/profile" element={<Profile />} />
           <Route path="/onboarding/age" element={<Age />} />
           <Route path="/onboarding/interests" element={<Interests />} />
+          <Route path="/onboarding/profileDisplay" element={<ProfileDisplay />} />
           <Route path="/tempBucket" element={<TempBucket />} />
           <Route path="/tempChat" element={<TempChat />} />
           <Route path="/tempProfile" element={<TempProfile />} />
