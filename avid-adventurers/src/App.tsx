@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from './pages/onboarding/Profile';
 import Age from './pages/onboarding/Age';
@@ -21,13 +22,15 @@ import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
 import EventDetails from "./pages/events/EventDetails";
-
+import { ProfileCard } from './components/ProfileCard';
+import './App.css';
 
 function App() {
   return (
     <Router>
       <OnboardingProvider>
         <Routes>
+          <Route path="/" element={<ProfileCard />} />
           <Route path="/onboarding/profile" element={<Profile />} />
           <Route path="/onboarding/age" element={<Age />} />
           <Route path="/onboarding/interests" element={<Interests />} />
