@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CardWrapper, EventImage, EventTitle, EventDetail, Interested } from './styles';
 
 interface EventBoxProps {
@@ -23,16 +23,19 @@ export const EventBox: React.FC<EventBoxProps> = ({
   interestedCount,
   link,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(link);
+  };
+
   return (
-    <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
-      <CardWrapper>
-        <EventDetail>{weekday}, {date} at {time}</EventDetail>
-        <EventImage src={imageUrl} alt={title} />
-        <EventTitle>{title}</EventTitle>
-        <EventDetail>{location}</EventDetail>
-        <Interested>{interestedCount} interested</Interested>
-      </CardWrapper>
-    </Link>
+    <CardWrapper onClick={handleClick} style={{ cursor: 'pointer' }}>
+      <EventDetail><b>{weekday}, {date}</b> at {time}</EventDetail>
+      <EventImage src={imageUrl} alt={title} />
+      <EventTitle>{title}</EventTitle>
+      <EventDetail>{location}</EventDetail>
+      <Interested>{interestedCount} interested</Interested>
+    </CardWrapper>
   );
 };
-
