@@ -13,10 +13,7 @@ import TempChat from "./pages/TempChat";
 import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
-import Sunset from "./pages/events/Sunset";
-import Yoga from "./pages/events/Yoga";
-import Arizmendi from "./pages/events/Arizmendi";
-import Sail from "./pages/events/Sail";
+import EventDetails from "./pages/events/EventDetails";
 
 
 function App() {
@@ -32,10 +29,7 @@ function App() {
           <Route path="/tempChat" element={<TempChat />} />
           <Route path="/tempProfile" element={<TempProfile />} />
           <Route path="/home" element={<Events />} />
-          <Route path="/events/sunset" element={<Sunset />} />
-          <Route path="/events/yoga" element={<Yoga />} />
-          <Route path="/events/arizmendi" element={<Arizmendi />} />
-          <Route path="/events/sail" element={<Sail />} />          
+          <Route path="/events/:eventSlug" element={<EventDetails />} />      
         </Routes>
       </OnboardingProvider>
       <SurveyProvider>
