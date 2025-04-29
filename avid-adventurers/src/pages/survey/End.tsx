@@ -10,7 +10,7 @@ const End: React.FC = () => {
     const { friendProfileImage, friendName, friendInterests, activity, interests, rating, setRating, updateInterests, setProfileImage } = useSurvey();
 
     const handleDone = () => {
-      navigate('/temphome');
+      navigate('/home');
     };
 
     return (
