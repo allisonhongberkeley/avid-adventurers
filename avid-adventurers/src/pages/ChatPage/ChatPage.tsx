@@ -41,6 +41,7 @@ const ChatPage: React.FC = () => {
     const [showHangoutPrompt, setShowHangoutPrompt] = useState(false);
     const { firstName } = useOnboarding();
     const navigate = useNavigate();
+    const apiKey = process.env.REAGANT_API_KEY;
 
     /* [TODO] Hardcoded the contactName to be the other user's name. Fix after Inbox is built*/
     const contactName = firstName === 'Claire' ? 'Tyler' : 'Claire';
@@ -129,7 +130,7 @@ const ChatPage: React.FC = () => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: 'Bearer rg_v1_7m95qdgnyxeo6r4chhlngtuec0c7wn0hwjfz_ngk',
+              Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
                 "conversationHistory": conversationString,
