@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef} from 'react';
 import { useOnboarding } from '../../utils/onboardingContext';
 import { useNavigate } from 'react-router-dom';
 import { MessageWithOptions } from '../../components/MessageWithOptions/MessageWithOptions';
 
 
+=======
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+>>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
 import {
     BackButton,
     ChatContainer,
@@ -13,6 +18,7 @@ import {
     UserMessageBubble,
     InputArea,
     TextInput,
+<<<<<<< HEAD
     SendButton,
     MessageRow, 
     ProfileIcon,
@@ -70,6 +76,43 @@ const ChatPage: React.FC = () => {
     const acceptCalendarInvite = () => {
         setShowCalendarPrompt(false);
         setShowHangoutPrompt(true);
+=======
+    AddButton,
+    PageWrapper,
+    BackButton,
+    Title,
+    MessageInput,
+    SendButton
+} from './ChatPageStyles';
+
+// Temporary data structure - ideally fetch based on chatId
+const sampleChats = [
+    { id: 1, name: 'Tyler', interest: 'Skateboarding', message: 'Hi Claire! You like skateboarding...', time: '2:15 PM', unread: 1, initial: 'T' },
+    { id: 2, name: 'Emma', interest: 'Hiking', message: 'What\'s your favorite....', time: '11:17 AM', unread: 0, initial: 'E' },
+    { id: 3, name: 'Jason', interest: 'Cooking', message: 'Let\'s meet at 5 pm at...', time: '10:15 AM', unread: 0, initial: 'J' },
+    { id: 4, name: 'Miguel', interest: 'Jazz', message: 'I\'m going to a concert near...', time: '9:07 AM', unread: 0, initial: 'M' },
+];
+
+const ChatPage: React.FC = () => {
+    const navigate = useNavigate();
+    const { chatId } = useParams<{ chatId: string }>();
+
+    // Find the chat partner based on chatId (convert chatId string to number)
+    const chatPartner = sampleChats.find(chat => chat.id === Number(chatId));
+    const partnerName = chatPartner ? chatPartner.name : 'Chat'; // Default title
+
+    const handleBack = () => {
+        navigate(-1); // Go back to the previous page (which should be ChatInbox)
+        // Alternatively, navigate('/inbox'); 
+    };
+
+    // State to manage the text input value
+    const [inputText, setInputText] = React.useState('Hey Tyler!');
+
+    // Placeholder function for sending a message
+    const handleSend = () => {
+        console.log('Send message clicked');
+>>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
     };
 
     const denyCalendarInvite = () => {
@@ -153,8 +196,9 @@ const ChatPage: React.FC = () => {
       };      
           
     return (
-        <ChatContainer>
+        <PageWrapper>
             <Header>
+<<<<<<< HEAD
                 <BackButton onClick={handleBack}>{'<'}</BackButton>
                 <ContactName>{contactName}</ContactName>
             </Header>
@@ -209,18 +253,31 @@ const ChatPage: React.FC = () => {
                     />
                 )}
 
+=======
+                <BackButton onClick={handleBack}>&lt;</BackButton>
+                <Title>{partnerName}</Title> {/* Display chat partner's name */}
+            </Header>
+            <MessageArea>
+                {/* Messages will be displayed here */}
+                <p>Messages for {partnerName} go here...</p>
+>>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
             </MessageArea>
             <InputArea>
-                <TextInput
-                    type="text"
+                <MessageInput
+                    placeholder="Hey Tyler!"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
+<<<<<<< HEAD
                     placeholder="Type a message..." 
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 />
                 <SendButton onClick={() => handleSend()}>{'>'}</SendButton>
+=======
+                />
+                <SendButton onClick={handleSend}>+</SendButton>
+>>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
             </InputArea>
-        </ChatContainer>
+        </PageWrapper>
     );
 };
 

@@ -14,6 +14,7 @@ import Uninterested from './pages/survey/Uninterested';
 import Confirmation from './pages/survey/Confirmation';
 import Events from './pages/Home';
 import Chat from './pages/ChatPage/ChatPage';
+import ChatInbox from './pages/ChatInbox/ChatInbox';
 import Bucket from './pages/Bucket';
 import EventDetails from './pages/events/EventDetails';
 
@@ -49,6 +50,7 @@ function App() {
               <Route path="/home" element={<Events />} />
               <Route path="/events/:eventSlug" element={<EventDetails />} />
               <Route path="/chat" element={<Chat />} />
+              <Route path="/inbox" element={<ChatInbox />} />
               <Route path="/bucket" element={<Bucket />} />
             </Routes>
           </SurveyProvider>
