@@ -19,7 +19,7 @@ const ProfileDisplay: React.FC = () => {
     const { firstName, city, profileImage, interests } = useOnboarding();
 
     const handleContinue = () => {
-        navigate('/dashboard');
+        navigate('/home');
     };
 
     const handleBack = () => {

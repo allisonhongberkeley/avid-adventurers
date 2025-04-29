@@ -1,5 +1,5 @@
 export const socialOptions = ['concerts', 'karaoke', 'board games', 'crocheting', 'sightseeing', 'clubbing'];
-export const sportsOptions =['surfing', 'swimming', 'basketball', 'paddleboarding', 'skateboarding', 'hiking', 'pickleball'];
+export const sportsOptions =['surfing', 'swimming', 'basketball', 'paddleboarding', 'skateboarding', 'hiking', 'pickleball', 'sail', 'yoga', 'sunset'];
 export const foodOptions = [
     'japanese',
     'mexican',
@@ -36,6 +36,9 @@ export const artsAndCraftsOptions = [
     'paddleboarding': '🛶',
     'skateboarding': '🛹',
     'pickleball': '🏓',
+    'sail': '⛵',
+    'yoga': '🧘',
+    'sunset': '🌅',
   
     'japanese': '🍣',
     'mexican': '🌮',

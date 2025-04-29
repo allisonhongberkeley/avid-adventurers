@@ -5,9 +5,8 @@ export const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh; // Use 100vh to fill viewport height strictly
-  max-width: 350px; 
+  max-width: 400px; 
   margin: auto; // Keep centering
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Keep shadow
   background-color: #ffffff; // White background like Profile
 `;
 
@@ -23,19 +22,6 @@ export const Header = styled.div`
   flex-shrink: 0;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.16);
   z-index: 999;
-
-  // Make back arrow larger and give it more space
-  &::before {
-    content: '< ';
-    font-size: 1.8rem;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 5px;
-    position: absolute;
-    left: 15px; // Same as padding
-    top: 50%;
-    transform: translateY(-50%);
-  }
 `;
 
 // Apply Title-like styling
@@ -54,110 +40,47 @@ export const MessageArea = styled.div`
   overflow-y: auto; // Allows internal scrolling
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 24px;
   background-color: #f9f9f9; // Light grey background for messages
 `;
 
 // Base message bubble style
 const MessageBubbleBase = styled.div`
   padding: 10px 15px;
-  border: 1px solid #000;
-  border-radius: 15px;
+  border-radius: 12px;
+  border: 3px solid var(--black, #1B1B1B);
+  background: var(--white, #FFF);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.16);
   max-width: 75%;
   word-wrap: break-word;
   display: flex;
   align-items: center;
   gap: 8px;
   position: relative;
-
-  &::after {
-      content: '';
-      position: absolute;
-      bottom: 5px;
-      width: 0;
-      height: 0;
-      border: 8px solid transparent;
-  }
 `;
 
-// AI message bubble style
-export const AiMessageBubble = styled(MessageBubbleBase)`
-  background-color: #ffffff;
-  align-self: flex-start;
-
-  &::before {
-      content: 'AI';
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      border-radius: 50%;
-      border: 1px solid #000;
-      background-color: #ffffff;
-      text-align: center;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-      margin-right: 5px;
-  }
-
-  &::after {
-    left: -10px;
-    border-right-color: #000;
-  }
-
-  // Inner white part of tail
-  & > span::before { // Target span inside for positioning relative to text
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: -8px;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
-    border-right-color: #ffffff;
-  }
-`;
-
-// User message bubble style (placeholder)
 export const UserMessageBubble = styled(MessageBubbleBase)`
+  padding: 10px 15px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  max-width: 75%;
+  word-wrap: break-word;
   background-color: #ffffff;
-  align-self: flex-end;
+  position: relative;
+`;
 
-  &::before {
-      content: ' ';
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 1px solid #000;
-      background-color: #eee;
-      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">👤</text></svg>');
-      background-size: 70%;
-      background-position: center;
-      background-repeat: no-repeat;
-      text-align: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-      order: 1;
-      margin-left: 8px;
-  }
-
-  &::after {
-    right: -10px;
-    border-left-color: #000;
-  }
-
-  // Inner white part of tail
-  & > span::before { // Target span inside
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    right: -8px;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
-    border-left-color: #ffffff;
-  }
+export const AIIcon = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background-color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 `;
 
 // Input area at the bottom
@@ -188,8 +111,29 @@ export const TextInput = styled.input`
   }
 `;
 
+export const MessageRow = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px; // Spacing between icon and bubble
+`;
+
+export const LeftMessageRow = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px; 
+`;
+
+export const ProfileIcon = styled.img`
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-left: 4px;
+`;
+
 // Button for adding attachments (+)
-export const AddButton = styled.button`
+export const SendButton = styled.button`
   background-color: transparent;
   color: #000;
   border: 1px solid #000;
@@ -207,3 +151,25 @@ export const AddButton = styled.button`
     background-color: #eee;
   }
 `; 
+
+export const BackButton = styled.button`
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: #666;
+  }
+`;

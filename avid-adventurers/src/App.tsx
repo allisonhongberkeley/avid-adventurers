@@ -14,10 +14,9 @@ import Uninterested from './pages/survey/Uninterested';
 import Confirmation from './pages/survey/Confirmation';
 import { OnboardingProvider } from './utils/onboardingContext';
 import Events from './pages/Home';
+import Chat from './pages/ChatPage/ChatPage';
 
 import TempBucket from "./pages/TempBucket";
-import TempChat from "./pages/TempChat";
-import TempProfile from "./pages/TempProfile";
 import { SurveyProvider } from './utils/surveyContext';
 
 import EventDetails from "./pages/events/EventDetails";
@@ -33,10 +32,9 @@ function App() {
           <Route path="/onboarding/interests" element={<Interests />} />
           <Route path="/onboarding/profileDisplay" element={<ProfileDisplay />} />
           <Route path="/tempBucket" element={<TempBucket />} />
-          <Route path="/tempChat" element={<TempChat />} />
-          <Route path="/tempProfile" element={<TempProfile />} />
           <Route path="/home" element={<Events />} />
-          <Route path="/events/:eventSlug" element={<EventDetails />} />      
+          <Route path="/events/:eventSlug" element={<EventDetails />} /> 
+          <Route path="/chat" element={<Chat />} />      
         </Routes>
       </OnboardingProvider>
       <SurveyProvider>

@@ -45,5 +45,14 @@ export interface EventDetails {
       location: 'Central Bay',
       interestedPeople: ['maya', 'nina', 'leo'],
     },
+    skateboarding: {
+        title: 'Skateboarding',
+        time: '2:00 PM',
+        weekday: 'Friday',
+        date: 'May 12th',
+        imageUrl: '/skateboarding.png',
+        location: 'Potrero del Sol',
+        interestedPeople: ['tyler', 'maya'],
+    },
   };
   
