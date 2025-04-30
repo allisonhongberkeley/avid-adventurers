@@ -16,7 +16,6 @@ export const CardWrapper = styled.div`
   flex-shrink: 0;
 `;
 
-
 export const EventImage = styled.img`
   width: 100%;
   height: 150px;

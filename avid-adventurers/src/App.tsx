@@ -13,10 +13,11 @@ import End from './pages/survey/End';
 import Uninterested from './pages/survey/Uninterested';
 import Confirmation from './pages/survey/Confirmation';
 import { OnboardingProvider } from './utils/onboardingContext';
+import { BucketlistProvider } from './utils/bucketlistContext';
 import Events from './pages/Home';
 import Chat from './pages/ChatPage/ChatPage';
 
-import TempBucket from "./pages/TempBucket";
+import Bucket from "./pages/Bucket";
 import { SurveyProvider } from './utils/surveyContext';
 
 import EventDetails from "./pages/events/EventDetails";
@@ -31,11 +32,17 @@ function App() {
           <Route path="/onboarding/age" element={<Age />} />
           <Route path="/onboarding/interests" element={<Interests />} />
           <Route path="/onboarding/profileDisplay" element={<ProfileDisplay />} />
-          <Route path="/tempBucket" element={<TempBucket />} />
           <Route path="/home" element={<Events />} />
           <Route path="/events/:eventSlug" element={<EventDetails />} /> 
-          <Route path="/chat" element={<Chat />} />      
+          <Route path="/chat" element={<Chat />} />  
         </Routes>
+        <BucketlistProvider>
+          <Routes>
+            <Route path="/Bucket" element={<Bucket />} />
+            <Route path="/home" element={<Events />} />
+            <Route path="/events/:eventSlug" element={<EventDetails />} />
+          </Routes>
+        </BucketlistProvider>
       </OnboardingProvider>
       <SurveyProvider>
         <Routes>
