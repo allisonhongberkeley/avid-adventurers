@@ -10,7 +10,7 @@ export const Exit: React.FC<ExitProps> = ({ link }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(link);
+    navigate(-1);
   };
 
   return (
