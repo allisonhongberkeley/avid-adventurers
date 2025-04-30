@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface SurveyData {
   friendProfileImage: File | null;
   friendName: string;
   friendInterests: string[];
+  setFriendInterests: (interests: string[]) => void;
   interests: string[];
   activity: string;
   rating: number;
@@ -27,8 +28,8 @@ export const useSurvey = () => {
 export const SurveyProvider = ({ children }: { children: ReactNode }) => {
     const [friendProfileImage, setProfileImage] = useState<File | null>(null);
     const friendName = 'Tyler';
-    const friendInterests = ['skateboarding', 'hiking', 'sailing'];
-    const [interests, setInterests] = useState<string[]>(['paddleboarding', 'skateboarding', 'sailing', 'hiking', 'coffee', 'wine tasting', 'concerts']); // current user's interests
+    const [friendInterests, setFriendInterests] = useState<string[]>(['skateboarding', 'hiking', 'sail']); // current user's interests
+    const [interests, setInterests] = useState<string[]>(['paddleboarding', 'skateboarding', 'sail', 'hiking', 'coffee', 'wine tasting', 'concerts']); // current user's interests
     const activity = 'skateboarding';
     const [rating, setRating] = useState<number>(0);
     const [experience, setExperience] = useState<string>('');
@@ -43,6 +44,7 @@ export const SurveyProvider = ({ children }: { children: ReactNode }) => {
           friendProfileImage,
           friendName,
           friendInterests,
+          setFriendInterests, 
           interests,
           activity,
           rating,
