@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef} from 'react';
 import { useOnboarding } from '../../utils/onboardingContext';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,9 @@ import { MessageWithOptions } from '../../components/MessageWithOptions/MessageW
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 >>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
+=======
+import React, { useState } from 'react';
+>>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
 import {
     BackButton,
     ChatContainer,
@@ -78,41 +82,22 @@ const ChatPage: React.FC = () => {
         setShowHangoutPrompt(true);
 =======
     AddButton,
-    PageWrapper,
-    BackButton,
-    Title,
-    MessageInput,
-    SendButton
 } from './ChatPageStyles';
 
-// Temporary data structure - ideally fetch based on chatId
-const sampleChats = [
-    { id: 1, name: 'Tyler', interest: 'Skateboarding', message: 'Hi Claire! You like skateboarding...', time: '2:15 PM', unread: 1, initial: 'T' },
-    { id: 2, name: 'Emma', interest: 'Hiking', message: 'What\'s your favorite....', time: '11:17 AM', unread: 0, initial: 'E' },
-    { id: 3, name: 'Jason', interest: 'Cooking', message: 'Let\'s meet at 5 pm at...', time: '10:15 AM', unread: 0, initial: 'J' },
-    { id: 4, name: 'Miguel', interest: 'Jazz', message: 'I\'m going to a concert near...', time: '9:07 AM', unread: 0, initial: 'M' },
-];
-
 const ChatPage: React.FC = () => {
-    const navigate = useNavigate();
-    const { chatId } = useParams<{ chatId: string }>();
-
-    // Find the chat partner based on chatId (convert chatId string to number)
-    const chatPartner = sampleChats.find(chat => chat.id === Number(chatId));
-    const partnerName = chatPartner ? chatPartner.name : 'Chat'; // Default title
-
-    const handleBack = () => {
-        navigate(-1); // Go back to the previous page (which should be ChatInbox)
-        // Alternatively, navigate('/inbox'); 
-    };
-
     // State to manage the text input value
-    const [inputText, setInputText] = React.useState('Hey Tyler!');
+    const [inputText, setInputText] = useState('Hey Tyler!');
 
     // Placeholder function for sending a message
     const handleSend = () => {
+<<<<<<< HEAD
         console.log('Send message clicked');
 >>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
+=======
+        console.log('Sending message:', inputText);
+        // Clear input after sending (optional)
+        // setInputText('');
+>>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
     };
 
     const denyCalendarInvite = () => {
@@ -196,8 +181,9 @@ const ChatPage: React.FC = () => {
       };      
           
     return (
-        <PageWrapper>
+        <ChatContainer>
             <Header>
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <BackButton onClick={handleBack}>{'<'}</BackButton>
                 <ContactName>{contactName}</ContactName>
@@ -261,12 +247,28 @@ const ChatPage: React.FC = () => {
                 {/* Messages will be displayed here */}
                 <p>Messages for {partnerName} go here...</p>
 >>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
+=======
+                {/* Display the contact name */}
+                <ContactName>Tyler</ContactName>
+            </Header>
+            <MessageArea>
+                {/* Example AI message - REMOVED */}
+                {/* <AiMessageBubble>
+                    <span>You have been successfully matched! ...</span>
+                </AiMessageBubble> */}
+                {/* Example User message placeholder - REMOVED */}
+                {/* <UserMessageBubble>
+                    <span>Hi Claire! You like skateboarding too?! ...</span>
+                </UserMessageBubble> */}
+                {/* Message area is now empty, ready for dynamic messages */}
+>>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
             </MessageArea>
             <InputArea>
-                <MessageInput
-                    placeholder="Hey Tyler!"
+                <TextInput
+                    type="text"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
+<<<<<<< HEAD
 <<<<<<< HEAD
                     placeholder="Type a message..." 
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
@@ -276,8 +278,15 @@ const ChatPage: React.FC = () => {
                 />
                 <SendButton onClick={handleSend}>+</SendButton>
 >>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
+=======
+                    placeholder="Type a message..." // Changed placeholder from image
+                />
+                <AddButton onClick={handleAddAttachment}>
+                    +
+                </AddButton>
+>>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
             </InputArea>
-        </PageWrapper>
+        </ChatContainer>
     );
 };
 
