@@ -170,3 +170,18 @@ export const ScrollContainer = styled.div`
   }
 `;
 
+export const EmptyStateImage = styled.img`
+  width: 300px;
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 0rem;
+  object-fit: contain;
+  align-self: center;
+`;
+
+export const EmptyMessage = styled.p`
+  font-size: 1.25rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 2rem;
+`;

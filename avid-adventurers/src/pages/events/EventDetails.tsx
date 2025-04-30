@@ -3,14 +3,7 @@ import { useParams } from 'react-router-dom';
 import { eventData } from '../../utils/eventData';
 import { EventPage } from '../../components/EventPage/EventPage';
 import { ProfileBox } from '../../components/ProfileBox/ProfileBox';
-import {
-  Container,
-  FormWrapperLeft,
-  ScrollContainer,
-  Title2,
-  ButtonRow,
-  ContinueButton
-} from '../styles';
+import { Container, FormWrapperLeft, ScrollContainer, Title2, ButtonRow, ContinueButton } from '../styles';
 import { useBucketlist } from '../../utils/bucketlistContext';
 
 const EventDetails: React.FC = () => {

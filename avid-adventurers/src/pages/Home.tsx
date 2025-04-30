@@ -1,10 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EventBox } from '../components/EventBox/EventBox';
+import { useOnboarding } from '../utils/onboardingContext';
 import { NavBar } from '../components/NavBar/NavBar';
-import { Container, FormWrapperLeft, ScrollContainer, Title, Subtitle } from './styles';
+import { Container, FormWrapperLeft, ScrollContainer, Title } from './styles';
 import { ProfileBox } from '../components/ProfileBox/ProfileBox';
-import { eventData } from '../utils/eventData'; // or wherever your data is defined
+import { eventData } from '../utils/eventData';
 
 const Events: React.FC = () => {
   return (
