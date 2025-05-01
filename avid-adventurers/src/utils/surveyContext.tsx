@@ -28,7 +28,7 @@ export const useSurvey = () => {
 export const SurveyProvider = ({ children }: { children: ReactNode }) => {
     const [friendProfileImage, setProfileImage] = useState<File | null>(null);
     const friendName = 'Tyler';
-    const [friendInterests, setFriendInterests] = useState<string[]>(['skateboarding', 'hiking', 'sail']); // current user's interests
+    const [friendInterests, setFriendInterests] = useState<string[]>(['skateboarding', 'hiking', 'sail']);
     const [interests, setInterests] = useState<string[]>(['paddleboarding', 'skateboarding', 'sail', 'hiking', 'coffee', 'wine tasting', 'concerts']); // current user's interests
     const activity = 'skateboarding';
     const [rating, setRating] = useState<number>(0);
