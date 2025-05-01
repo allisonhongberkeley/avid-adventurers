@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React, { useState, useEffect, useRef} from 'react';
 import { useOnboarding } from '../../utils/onboardingContext';
 import { useNavigate } from 'react-router-dom';
 import { MessageWithOptions } from '../../components/MessageWithOptions/MessageWithOptions';
 
 
-=======
-import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
->>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
-=======
-import React, { useState } from 'react';
->>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
 import {
     BackButton,
     ChatContainer,
@@ -22,7 +13,6 @@ import {
     UserMessageBubble,
     InputArea,
     TextInput,
-<<<<<<< HEAD
     SendButton,
     MessageRow, 
     ProfileIcon,
@@ -80,24 +70,6 @@ const ChatPage: React.FC = () => {
     const acceptCalendarInvite = () => {
         setShowCalendarPrompt(false);
         setShowHangoutPrompt(true);
-=======
-    AddButton,
-} from './ChatPageStyles';
-
-const ChatPage: React.FC = () => {
-    // State to manage the text input value
-    const [inputText, setInputText] = useState('Hey Tyler!');
-
-    // Placeholder function for sending a message
-    const handleSend = () => {
-<<<<<<< HEAD
-        console.log('Send message clicked');
->>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
-=======
-        console.log('Sending message:', inputText);
-        // Clear input after sending (optional)
-        // setInputText('');
->>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
     };
 
     const denyCalendarInvite = () => {
@@ -183,8 +155,6 @@ const ChatPage: React.FC = () => {
     return (
         <ChatContainer>
             <Header>
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <BackButton onClick={handleBack}>{'<'}</BackButton>
                 <ContactName>{contactName}</ContactName>
             </Header>
@@ -239,52 +209,16 @@ const ChatPage: React.FC = () => {
                     />
                 )}
 
-=======
-                <BackButton onClick={handleBack}>&lt;</BackButton>
-                <Title>{partnerName}</Title> {/* Display chat partner's name */}
-            </Header>
-            <MessageArea>
-                {/* Messages will be displayed here */}
-                <p>Messages for {partnerName} go here...</p>
->>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
-=======
-                {/* Display the contact name */}
-                <ContactName>Tyler</ContactName>
-            </Header>
-            <MessageArea>
-                {/* Example AI message - REMOVED */}
-                {/* <AiMessageBubble>
-                    <span>You have been successfully matched! ...</span>
-                </AiMessageBubble> */}
-                {/* Example User message placeholder - REMOVED */}
-                {/* <UserMessageBubble>
-                    <span>Hi Claire! You like skateboarding too?! ...</span>
-                </UserMessageBubble> */}
-                {/* Message area is now empty, ready for dynamic messages */}
->>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
             </MessageArea>
             <InputArea>
                 <TextInput
                     type="text"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-<<<<<<< HEAD
-<<<<<<< HEAD
                     placeholder="Type a message..." 
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 />
                 <SendButton onClick={() => handleSend()}>{'>'}</SendButton>
-=======
-                />
-                <SendButton onClick={handleSend}>+</SendButton>
->>>>>>> 2661f8ea (feat: Implement Chat Inbox page and Chat Page navigation)
-=======
-                    placeholder="Type a message..." // Changed placeholder from image
-                />
-                <AddButton onClick={handleAddAttachment}>
-                    +
-                </AddButton>
->>>>>>> fd3b9245 (revert: Revert ChatPage changes to state before branch modifications)
             </InputArea>
         </ChatContainer>
     );
