@@ -17,7 +17,7 @@ export const NavBar: React.FC = () => {
         <Icon src="/Bucketlist.png" alt="bucket list page icon" />
       </OptionWrapper>
 
-      <OptionWrapper onClick={() => navigate("/chat")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/inbox")} style={{ cursor: 'pointer' }}>
         <NavText>Inbox</NavText>
         <Icon src="/Inbox.png" alt="inbox page icon" />
       </OptionWrapper>
