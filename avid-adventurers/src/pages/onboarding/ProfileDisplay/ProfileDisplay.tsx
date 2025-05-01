@@ -12,7 +12,7 @@ import {
     LocationText,
     InterestsList,
     InterestTag,
-} from './ProfileDisplayStyles';
+} from './styles';
 
 const ProfileDisplay: React.FC = () => {
     const navigate = useNavigate();

@@ -1,30 +1,78 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Label } from '../../components/Label/Label';
-import { Container, FormWrapper, ButtonRow, ContinueButton } from '../styles';
+import { Container, FormWrapper, ButtonRow, ContinueButton, BackButton } from '../styles';
+import { interestIcons } from '../../utils/Interests';
 import { useSurvey } from '../../utils/surveyContext';
-
+import { TagContainer, Tag, RemoveButton } from '../../components/TagSelector/styles';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 const Commonality: React.FC = () => {
     const navigate = useNavigate();
-    const { friendProfileImage, friendName, friendInterests, activity, interests, rating, setRating, updateInterests, setProfileImage } = useSurvey();
+    const location = useLocation();
+    const { friendName, friendInterests, setFriendInterests, interests, updateInterests } = useSurvey();
 
-    const handleContinue = () => {
-      navigate('/survey/end');
+    const allTags = [
+        'skateboarding',
+        'sail',
+        'hiking',
+        'pickleball',
+        'stargazing',
+        'football',
+    ];
+
+    const handleAddTag = (tag: string) => {
+        const newTags = [...friendInterests, tag];
+        setFriendInterests(newTags);
+        updateInterests(newTags);
     };
 
+    const handleRemoveTag = (tag: string) => {
+        const newTags = friendInterests.filter((t) => t !== tag);
+        setFriendInterests(newTags);
+        updateInterests(newTags);
+    };
+
+    const handleContinue = () => {
+        navigate('/survey/end', { state: { from: location.pathname } });
+    };
+
+    const handleBack = () => {
+        navigate('/survey/interested');
+    };
+
+    const unselectedTags = allTags.filter((tag) => !friendInterests.includes(tag));
+
     return (
-    <Container>
-    <FormWrapper>
-        <Label
-                label={`Here are ${friendName}'s other interests. Select all that interest you:`}
-                multiline = {true}
+        <Container>
+            <FormWrapper>
+                <Label
+                    label={`Here are ${friendName}'s\nother interests.\nSelect all that\ninterest you!`}
+                    multiline={true}
                 />
-        <ButtonRow> 
-            <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
-        </ButtonRow>
-    </FormWrapper>
-    </Container>
-)};
+                <TagContainer style={{ marginTop: '-0.75rem' }}>
+                    {friendInterests.map((tag) => (
+                        <Tag key={tag} $selected={true} onClick={() => handleRemoveTag(tag)}>
+                            {interestIcons[tag] ?? ''} {tag} <RemoveButton>✕</RemoveButton>
+                        </Tag>
+                    ))}
+                </TagContainer>
+                <TagContainer style={{ marginTop: '1rem' }}>
+                    {unselectedTags.map((tag) => (
+                        <Tag key={tag} $selected={false} onClick={() => handleAddTag(tag)}>
+                            {interestIcons[tag] ?? ''} {tag}
+                        </Tag>
+                    ))}
+                </TagContainer>
+                {unselectedTags.length > 0 && <div style={{ marginBottom: '1rem' }} />}
+                <ProgressBar totalSteps={3} currentStep={2} />
+                <ButtonRow style={{ maxWidth: '350px' }}>
+                    <BackButton onClick={handleBack}>Back</BackButton>
+                    <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
+                </ButtonRow>
+            </FormWrapper>
+        </Container>
+    );
+};
 
 export default Commonality;

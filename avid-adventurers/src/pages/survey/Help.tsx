@@ -1,12 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Label } from '../../components/Label/Label';
-import { Container, FormWrapper, ButtonRow, ContinueButton } from '../styles';
+import { Container, FormWrapper, ButtonRow, ContinueButton, BackButton } from '../styles';
 import { useSurvey } from '../../utils/surveyContext';
-
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 const Help: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const { friendProfileImage, friendName, friendInterests, activity, interests, rating, setRating, updateInterests, setProfileImage } = useSurvey();
 
     const handleYes = () => {
@@ -14,8 +15,12 @@ const Help: React.FC = () => {
     };
 
     const handleNo = () => {
-        navigate('/survey/end');
+        navigate('/survey/end', { state: { from: location.pathname } });
       };
+
+    const handleBack = () => {
+        navigate('/survey/rated');
+    }
 
     return (
     <Container>
@@ -24,11 +29,15 @@ const Help: React.FC = () => {
                 label={`Would you like help setting up plans with ${friendName}?`}
                 multiline = {true}
                 >
-            <ButtonRow style={{ marginBottom: '15px' }}> 
+            <ButtonRow style={{ margin: '0 auto', maxWidth: '300px', marginBottom: '25px' }}> 
                 <ContinueButton onClick={handleYes}>Yes</ContinueButton>
                 <ContinueButton onClick={handleNo}>No</ContinueButton>
             </ButtonRow>
         </Label>
+        <ProgressBar totalSteps={3} currentStep={2} />
+        <ButtonRow style={{ maxWidth: '350px' }}>
+            <BackButton onClick={handleBack}>Back</BackButton> 
+        </ButtonRow>
     </FormWrapper>
     </Container>
 )};

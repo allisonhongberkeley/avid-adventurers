@@ -136,13 +136,20 @@ export const ContinueButton = styled.button`
 `;
 
 export const BackgroundWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+`;
+
+export const PhoneContainer = styled.div`
+  width: 400px;
+  min-height: 100vh;
   background-image: url('https://cdn.pixabay.com/animation/2024/05/02/07/43/07-43-00-535_512.gif');
   background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
-  z-index: -1;
+  position: relative;
 `;
 
 export const ScrollContainer = styled.div`

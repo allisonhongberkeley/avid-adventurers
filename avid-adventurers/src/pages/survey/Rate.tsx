@@ -5,6 +5,7 @@ import Rating from '../../components/Rating/Rating';
 import { Container, FormWrapper, ButtonRow, BackButton, ContinueButton } from '../styles';
 import { useSurvey } from '../../utils/surveyContext';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
+import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 
 const Rate: React.FC = () => {
@@ -19,17 +20,13 @@ const Rate: React.FC = () => {
       navigate('/survey/congrats');
     }
 
-    const handleRatingChange = (newRating: number) => {
-      setRating(newRating);
-    };
-
     return (
     <Container>
       <FormWrapper>
         <Label
           label = "How did you like the experience?"
         />
-        <Rating initialRating={rating} onRatingChange={handleRatingChange} />
+        <Rating initialRating={rating} onRatingChange={setRating} />
         <LabeledInput
           label="Why?"
           placeholder="Type your thoughts here..."
@@ -37,7 +34,8 @@ const Rate: React.FC = () => {
           multiline={true}
           onChange={(e) => setExperience(e.target.value)}
         />
-        <ButtonRow>
+        <ProgressBar totalSteps={3} currentStep={1} />
+        <ButtonRow style={{ maxWidth: '350px' }}>
           <BackButton onClick={handleBack}>Back</BackButton> 
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
         </ButtonRow>
