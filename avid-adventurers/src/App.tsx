@@ -17,7 +17,7 @@ import Chat from './pages/ChatPage/ChatPage';
 import ChatInbox from './pages/ChatInbox/ChatInbox';
 import Bucket from './pages/Bucket';
 import EventDetails from './pages/events/EventDetails';
-import { ProfileCard } from './components/ProfileCard';
+import ProfileCard from './components/ProfileCard/ProfileCard';
 
 import { OnboardingProvider } from './utils/onboardingContext';
 import { BucketlistProvider } from './utils/bucketlistContext';

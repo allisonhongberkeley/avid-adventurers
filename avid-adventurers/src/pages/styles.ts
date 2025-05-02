@@ -192,3 +192,26 @@ export const EmptyMessage = styled.p`
   text-align: center;
   margin-bottom: 2rem;
 `;
+
+export const InterestTag = styled.div<{ selected?: boolean }>`
+  padding: 0.375rem 0.625rem;
+  border-radius: 8px;
+  background-color: #E6E7EE;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  ${({ selected }) =>
+    selected &&
+    `
+    border: 3px solid #000;
+  `}
+`;
+
+export const InterestsList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;

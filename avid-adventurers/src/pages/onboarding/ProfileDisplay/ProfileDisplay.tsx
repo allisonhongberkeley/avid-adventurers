@@ -10,9 +10,9 @@ import {
     WelcomeTitle,
     UserName,
     LocationText,
-    InterestsList,
-    InterestTag,
 } from './styles';
+
+import { InterestsList, InterestTag } from '../../styles';
 
 const ProfileDisplay: React.FC = () => {
     const navigate = useNavigate();
