@@ -12,14 +12,14 @@ import {
     LocationText,
     InterestsList,
     InterestTag,
-} from './ProfileDisplayStyles';
+} from './styles';
 
 const ProfileDisplay: React.FC = () => {
     const navigate = useNavigate();
     const { firstName, city, profileImage, interests } = useOnboarding();
 
     const handleContinue = () => {
-        navigate('/dashboard');
+        navigate('/home');
     };
 
     const handleBack = () => {
