@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../utils/onboardingContext';
 import { userData } from '../../utils/userData';
@@ -42,6 +42,8 @@ const HomeUserCard: React.FC<HomeUserCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const { interests: currentUserInterests } = useOnboarding();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [action, setAction] = useState<'none' | 'pass' | 'match'>('none');
 
   const isSharedInterest = (interest: string) => currentUserInterests.includes(interest);
   const sortedInterests = [
@@ -49,22 +51,45 @@ const HomeUserCard: React.FC<HomeUserCardProps> = ({
     ...interests.filter((interest) => !isSharedInterest(interest)),
   ];
 
-  // Convert object keys into an ordered array
   const userSlugs = Object.keys(userData);
   const currentIndex = userSlugs.indexOf(userSlug);
   const nextUserSlug = userSlugs[currentIndex + 1];
 
-  const handlePassOrMatch = () => {
-    if (nextUserSlug) {
-      navigate(`/people/${nextUserSlug}`);
-    } else {
-      navigate('/home');
-    }
+  // Handle the transition and navigate
+  const handlePassOrMatch = (actionType: 'pass' | 'match') => {
+    setAction(actionType);
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+      if (nextUserSlug) {
+        navigate(`/people/${nextUserSlug}`);
+      } else {
+        navigate('/home');
+      }
+    }, 500);
   };
+
+  useEffect(() => {
+    setIsTransitioning(false);
+    setAction('none');
+  }, [userSlug]);
 
   return (
     <PageWrapper>
-      <Card>
+      <Card
+        style={{
+          border: isTransitioning
+            ? action === 'pass'
+              ? '3px solid red'
+              : action === 'match'
+              ? '3px solid green'
+              : 'none'
+            : 'none',
+          transition: 'opacity 0.5s ease, transform 0.5s ease', 
+          opacity: isTransitioning ? 0 : 1, 
+          transform: isTransitioning ? 'scale(0.95)' : 'scale(1)', 
+        }}
+      >
         <ExitLink link="/home" />
         <Title>Meet {name}!</Title>
 
@@ -93,8 +118,8 @@ const HomeUserCard: React.FC<HomeUserCardProps> = ({
         </InterestsList>
 
         <ButtonGroup>
-          <Button onClick={handlePassOrMatch}>Pass</Button>
-          <Button onClick={handlePassOrMatch}>Match</Button>
+          <Button onClick={() => handlePassOrMatch('pass')}>Pass</Button>
+          <Button onClick={() => handlePassOrMatch('match')}>Match</Button>
         </ButtonGroup>
       </Card>
     </PageWrapper>

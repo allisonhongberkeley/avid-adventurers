@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { userData } from '../../utils/userData';
-import UserCard from '../../components/UserCard/EventUserCard';
+import EventUserCard from '../../components/UserCard/EventUserCard';
 import { Container, FormWrapperLeft } from '../styles';
 import { eventData } from '../../utils/eventData';
 
@@ -30,7 +30,7 @@ const EventUserDetails: React.FC = () => {
     return (
         <Container>
             <FormWrapperLeft>
-                <UserCard
+                <EventUserCard
                     userSlug={userSlug}
                     name={user.name}
                     age={user.age}

@@ -7,7 +7,7 @@ export const PageWrapper = styled.div`
   height: 100%; 
 `;
 
-export const Card = styled.div`
+export const Card = styled.div<{ feedbackColor?: string; isTransitioning?: boolean }>`
   display: flex;
   flex-direction: column;
   max-width: 350px;
@@ -105,3 +105,4 @@ export const Button = styled.button`
     background-color: #1b1b1b;
   }
 `;
+

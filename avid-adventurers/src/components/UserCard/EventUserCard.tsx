@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../utils/onboardingContext';
 import { eventData } from '../../utils/eventData';
@@ -31,7 +31,7 @@ interface EventUserCardProps {
   eventSlug: string;
 }
 
-const UserCard: React.FC<EventUserCardProps> = ({
+const EventUserCard: React.FC<EventUserCardProps> = ({
   userSlug,
   name,
   age,
@@ -43,8 +43,16 @@ const UserCard: React.FC<EventUserCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const { interests: currentUserInterests } = useOnboarding();
+  const [action, setAction] = useState<'none' | 'pass' | 'match'>('none');
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const event = eventData[eventSlug];
+
+  useEffect(() => {
+    setIsTransitioning(false);
+    setAction('none');
+  }, [userSlug, eventSlug]);
+
   if (!event) return <div>Event data not found.</div>;
 
   const currentIndex = event.interestedPeople.findIndex(
@@ -56,13 +64,18 @@ const UserCard: React.FC<EventUserCardProps> = ({
   const nextUserSlug = !isLastUser
     ? event.interestedPeople[currentIndex + 1]
     : '';
-  
-  const handlePassOrMatch = () => {
-    if (isLastUser) {
-      navigate(`/events/${eventSlug}`);
-    } else {
-      navigate(`/events/${eventSlug}/people/${nextUserSlug}`);
-    }
+
+  const handlePassOrMatch = (actionType: 'pass' | 'match') => {
+    setAction(actionType);
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+      if (isLastUser) {
+        navigate(`/events/${eventSlug}`);
+      } else {
+        navigate(`/events/${eventSlug}/people/${nextUserSlug}`);
+      }
+    }, 500);
   };
 
   const isSharedInterest = (interest: string) => currentUserInterests.includes(interest);
@@ -73,7 +86,20 @@ const UserCard: React.FC<EventUserCardProps> = ({
 
   return (
     <PageWrapper>
-      <Card>
+      <Card
+        style={{
+          border: isTransitioning
+            ? action === 'pass'
+              ? '3px solid red'
+              : action === 'match'
+              ? '3px solid green'
+              : 'none'
+            : 'none',
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+          opacity: isTransitioning ? 0 : 1,
+          transform: isTransitioning ? 'scale(0.95)' : 'scale(1)',
+        }}
+      >
         <ExitLink link={`/events/${eventSlug}`} />
         <Title>Meet {name}!</Title>
 
@@ -102,12 +128,12 @@ const UserCard: React.FC<EventUserCardProps> = ({
         </InterestsList>
 
         <ButtonGroup>
-          <Button onClick={handlePassOrMatch}>Pass</Button>
-          <Button onClick={handlePassOrMatch}>Match</Button>
+          <Button onClick={() => handlePassOrMatch('pass')}>Pass</Button>
+          <Button onClick={() => handlePassOrMatch('match')}>Match</Button>
         </ButtonGroup>
       </Card>
     </PageWrapper>
   );
 };
 
-export default UserCard;
+export default EventUserCard;

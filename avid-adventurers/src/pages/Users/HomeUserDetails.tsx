@@ -5,7 +5,7 @@ import HomeUserCard from '../../components/UserCard/HomeUserCard';
 import { Container, FormWrapperLeft } from '../styles';
 import { eventData } from '../../utils/eventData';
 
-const UserDetails: React.FC = () => {
+const HomeUserDetails: React.FC = () => {
     const { userSlug } = useParams<{userSlug: string }>();
 
 
@@ -36,4 +36,4 @@ const UserDetails: React.FC = () => {
     );
 };
 
-export default UserDetails;
+export default HomeUserDetails;
