@@ -5,12 +5,15 @@ import { EventPage } from '../../components/EventPage/EventPage';
 import { ProfileBox } from '../../components/ProfileBox/ProfileBox';
 import { Container, FormWrapperLeft, ScrollContainer, Title2, ButtonRow, ContinueButton } from '../styles';
 import { useBucketlist } from '../../utils/bucketlistContext';
+import { useOnboarding } from '../../utils/onboardingContext'; 
 
 const EventDetails: React.FC = () => {
   const { eventSlug } = useParams();
   const event = eventSlug ? eventData[eventSlug] : null;
 
   const { bucketlist, addToBucketlist, removeFromBucketlist } = useBucketlist();
+  const { profileImage, firstName } = useOnboarding();
+
   const isInBucketlist = eventSlug ? bucketlist.includes(eventSlug) : false;
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -30,18 +33,29 @@ const EventDetails: React.FC = () => {
     }
   }, [isInBucketlist]);
 
-  const displayedPeople: { name: string; link: string }[] = useMemo(() => {
+  const displayedPeople: { name: string; link: string; imageUrl: string }[] = useMemo(() => {
     if (!event) return [];
 
+    const people = event.interestedPeople.map((name) => ({
+      name,
+      link: `/events/${eventSlug}/people/${name}`,
+      imageUrl: `/${name}.png`
+    }));
+
     if (isInBucketlist) {
-      return [
-        { name: 'Me', link: '/tempProfile' },
-        ...event.interestedPeople.map((name) => ({ name, link: `/people/${name}` }))
-      ];
+      const myImageUrl = profileImage
+        ? URL.createObjectURL(profileImage)  
+        : '/Profile.png'; 
+
+      people.unshift({
+        name: 'Me',
+        link: '/profileView',
+        imageUrl: myImageUrl
+      });
     }
 
-    return event.interestedPeople.map((name) => ({ name, link: `/people/${name}` }));
-  }, [event, isInBucketlist]);
+    return people;
+  }, [event, isInBucketlist, profileImage, firstName]);
 
   if (!event) return <div>Event not found</div>;
 
@@ -60,10 +74,10 @@ const EventDetails: React.FC = () => {
         <br />
         <Title2>Also interested</Title2>
         <ScrollContainer ref={scrollRef} style={{ scrollBehavior: 'smooth' }}>
-          {displayedPeople.map(({ name, link }) => (
+          {displayedPeople.map(({ name, link, imageUrl }) => (
             <ProfileBox
               key={name}
-              imageUrl="/profile.png"
+              imageUrl={imageUrl}
               name={name.charAt(0).toUpperCase() + name.slice(1)}
               link={link}
             />

@@ -34,7 +34,7 @@ const Bucket: React.FC = () => {
             date={event.date}
             imageUrl={event.imageUrl}
             location={event.location}
-            link={`/events/${event.slug}`}
+            link={`/Bucket/${event.slug}`}
           />
         ))
       )}

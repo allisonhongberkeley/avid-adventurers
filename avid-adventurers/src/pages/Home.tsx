@@ -6,6 +6,8 @@ import { NavBar } from '../components/NavBar/NavBar';
 import { Container, FormWrapperLeft, ScrollContainer, Title } from './styles';
 import { ProfileBox } from '../components/ProfileBox/ProfileBox';
 import { eventData } from '../utils/eventData';
+import { userData } from '../utils/userData';
+
 
 const Events: React.FC = () => {
   return (
@@ -29,13 +31,16 @@ const Events: React.FC = () => {
         </ScrollContainer>
 
         <br />
-        <Title>Top Matches</Title>
+        <Title>Top Picks</Title>
         <ScrollContainer>
-          <ProfileBox imageUrl="/profile.png" name="Alex" link="/people/alex" />
-          <ProfileBox imageUrl="/profile.png" name="Maya" link="/people/maya" />
-          <ProfileBox imageUrl="/profile.png" name="Jordan" link="/people/jordan" />
-          <ProfileBox imageUrl="/profile.png" name="Nina" link="/people/nina" />
-          <ProfileBox imageUrl="/profile.png" name="Leo" link="/people/leo" />
+          {Object.entries(userData).map(([key, user]) => (
+            <ProfileBox
+              key={key}
+              imageUrl={user.avatarUrl ?? '/profile.png'}
+              name={user.name}
+              link={`/people/${key}`}
+            />
+          ))}
         </ScrollContainer>
       </FormWrapperLeft>
       <NavBar />
