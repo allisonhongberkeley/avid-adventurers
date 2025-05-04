@@ -138,7 +138,7 @@ const Upcoming = () => {
       <h1 className="text-lg font-semibold mt-8 mb-2">Past Events</h1>
       <div style={{ marginBottom: '16px' }}>
         <EventBox
-          time="at 5AM until 10AM"
+          time="5AM until 10AM"
           weekday="Monday"
           date="May 5"
           title="Sunrise Picnic at GGP"
