@@ -7,9 +7,9 @@ interface EventBoxProps {
   weekday: string;
   date: string;
   title: string;
-  imageUrl: string;
+  imageUrl?: string;
   location: string;
-  interestedCount: number;
+  interestedCount?: number;
   link: string;
 }
 
@@ -32,10 +32,10 @@ export const EventBox: React.FC<EventBoxProps> = ({
   return (
     <CardWrapper onClick={handleClick} style={{ cursor: 'pointer' }}>
       <EventDetail><b>{weekday}, {date}</b> at {time}</EventDetail>
-      <EventImage src={imageUrl} alt={title} />
+      {imageUrl && <EventImage src={imageUrl} alt={title} />}
       <EventTitle>{title}</EventTitle>
       <EventDetail>{location}</EventDetail>
-      <Interested>{interestedCount} interested</Interested>
+      {interestedCount && <Interested>{interestedCount} interested</Interested>}
     </CardWrapper>
   );
 };

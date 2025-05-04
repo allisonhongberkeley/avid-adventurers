@@ -15,7 +15,9 @@ import Confirmation from './pages/survey/Confirmation';
 import { OnboardingProvider } from './utils/onboardingContext';
 import Events from './pages/Home';
 import Chat from './pages/ChatPage/ChatPage';
-import Week from './pages/calendar/week';
+import Upcoming from './pages/calendar/upcoming';
+import Add from './pages/calendar/add';
+import Edit from './pages/calendar/edit';
 
 import TempBucket from "./pages/TempBucket";
 import { SurveyProvider } from './utils/surveyContext';
@@ -51,7 +53,9 @@ function App() {
         </Routes>
       </SurveyProvider>
       <Routes>
-        <Route path="/calendar/week" element={<Week />} />
+        <Route path="/calendar/upcoming" element={<Upcoming />} />
+        <Route path="/calendar/add" element={<Add />} />
+        <Route path="/calendar/edit" element={<Edit />} />
       </Routes>
     </Router>
   );
