@@ -85,7 +85,7 @@ const Add = () => {
         onChange={(e) => handleInputChange('with', e.target.value)}
       />
 
-      <div style={{ width: '350px' }}>
+      <div style={{ width: '350px', maxWidth: '100%' }}>
         <DropdownSelect
             label="Day of Week"
             options={days}
@@ -115,8 +115,9 @@ const Add = () => {
       <ContinueButton
               style={{
                 backgroundColor: '#f44336',
-                marginTop: '1rem',
+                marginTop: '1.5rem',
                 width: '350px',
+                maxWidth: '100%',   
               }}
               onClick={handleCancel}
             >
