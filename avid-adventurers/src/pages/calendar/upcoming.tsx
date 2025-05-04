@@ -86,8 +86,21 @@ const Upcoming = () => {
 
   const handleWeMetClick = (event: Event, e: React.MouseEvent) => {
     e.stopPropagation();
+    const stored = JSON.parse(localStorage.getItem('calendarEvents') || '{}');
+    const updatedStored = { ...stored };
+    const dayStr = event.day.toString();
+    updatedStored[dayStr] = (updatedStored[dayStr] || []).filter((e: Event) => e.name !== event.name || e.startHour !== event.startHour);
+    localStorage.setItem('calendarEvents', JSON.stringify(updatedStored));
+    const pastEvents = JSON.parse(localStorage.getItem('pastEvents') || '[]');
+    pastEvents.push(event);
+    localStorage.setItem('pastEvents', JSON.stringify(pastEvents));
+    setEvents((prevEvents) => {
+      return prevEvents.filter((e) => e !== event);
+    });
     navigate('/survey/congrats');
   };
+  
+  
 
   return (
     <Container>
@@ -125,14 +138,26 @@ const Upcoming = () => {
       <h1 className="text-lg font-semibold mt-8 mb-2">Past Events</h1>
       <div style={{ marginBottom: '16px' }}>
         <EventBox
-          time="at 2PM until 5PM"
+          time="at 5AM until 10AM"
           weekday="Monday"
           date="May 5"
-          title="Picnic at GGP"
+          title="Sunrise Picnic at GGP"
           location="with Alice"
           link="#"
         />
       </div>
+      {JSON.parse(localStorage.getItem('pastEvents') || '[]').map((event: Event, index: number) => (
+        <div key={`${event.name}-${event.startHour}-${index}`} style={{ marginBottom: '16px' }}>
+          <EventBox
+            time={`${formatTime(event.startHour)} until ${formatTime(event.endHour)}`}
+            weekday={days[event.day]}
+            date={getNextDate(event.day)}
+            title={event.name}
+            location={`with ${event.with}`}
+            link="#"
+          />
+        </div>
+      ))}
     </Container>
   );
 };
