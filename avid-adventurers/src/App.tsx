@@ -17,6 +17,9 @@ import Chat from './pages/ChatPage/ChatPage';
 import ChatInbox from './pages/ChatInbox/ChatInbox';
 import Bucket from './pages/Bucket';
 import EventDetails from './pages/events/EventDetails';
+import Upcoming from './pages/calendar/upcoming';
+import Add from './pages/calendar/add';
+import Edit from './pages/calendar/edit';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 
 import { OnboardingProvider } from './utils/onboardingContext';
@@ -54,6 +57,10 @@ function App() {
               <Route path="/chat" element={<Chat />} />
               <Route path="/inbox" element={<ChatInbox />} />
               <Route path="/bucket" element={<Bucket />} />
+
+              <Route path="/calendar/upcoming" element={<Upcoming />} />
+              <Route path="/calendar/add" element={<Add />} />
+              <Route path="/calendar/edit" element={<Edit />} />
             </Routes>
           </SurveyProvider>
         </BucketlistProvider>
