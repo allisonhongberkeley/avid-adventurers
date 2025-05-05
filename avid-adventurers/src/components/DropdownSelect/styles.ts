@@ -18,7 +18,7 @@ export const DropdownHeader = styled.div<{ isOpen: boolean }>`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  width: 200px;
+  width: 100%;
   background-color: white;
 `;
 

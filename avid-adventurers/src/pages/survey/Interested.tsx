@@ -36,12 +36,14 @@ const Interested: React.FC = () => {
                 label={`Last time you and\n${friendName} went ${activity}.\n\nWant to try something\nnew next time?`}
                 multiline = {true}
                 >
+            <div style={{ margin: '0 auto', maxWidth: '100%' }}>
             <DropdownSelect
                 label="Try Something New"
                 options={["Try Something New", `${capFirst(activity)} Again`, "Open to Anything"]}
                 selected={selected}
                 setSelected={setSelected}
                 />
+            </div>
             <ContinueButton style={{ margin: '0 auto', marginBottom: '25px' }} onClick={handleContinue}>
                 Continue
             </ContinueButton>

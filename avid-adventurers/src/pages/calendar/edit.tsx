@@ -153,7 +153,7 @@ const Edit = () => {
       <LabeledInput label="Description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
       <LabeledInput label="With" value={form.with} onChange={(e) => setForm({ ...form, with: e.target.value })} />
       
-      <div style={{ width: '350px', maxWidth: '100%' }}>
+      <div style={{ width: '100%', maxWidth: '350px' }}>
         <DropdownSelect
         label="Day of Week"
         options={days}
