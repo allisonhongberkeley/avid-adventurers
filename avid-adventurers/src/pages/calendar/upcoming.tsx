@@ -149,7 +149,7 @@ const Upcoming = () => {
           date="May 5"
           title="Sunrise Picnic at GGP"
           location="with Alice"
-          imageUrl={`https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${'Sunrise Picnic at GGP'}` + '&resize=250x200'}
+          imageUrl={`https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${'Sunrise Picnic at GGP'}`}
           link="#"
         />
       </div>
