@@ -9,6 +9,15 @@ export interface EventDetails {
   }
   
   export const eventData: Record<string, EventDetails> = {
+    sunset: {
+      title: 'Sunset Picnic',
+      time: '6:00 PM',
+      weekday: 'Tuesday',
+      date: 'May 6th',
+      imageUrl: '/picnic.png',
+      location: 'Golden Gate Park',
+      interestedPeople: ['jordan', 'nina', 'alex'],
+    },
     yoga: {
       title: 'Guided Yoga',
       time: '5:30 PM',
@@ -20,21 +29,12 @@ export interface EventDetails {
     },
     arizmendi: {
       title: 'Lunch Meetup',
-      time: '12:00 PM',
+      time: '12:45 PM',
       weekday: 'Friday',
       date: 'May 9th',
       imageUrl: '/arizmendi.png',
       location: 'Arizmendi Bakery',
       interestedPeople: ['alex', 'maya', 'jordan'],
-    },
-    sunset: {
-      title: 'Sunset Picnic',
-      time: '6:00 PM',
-      weekday: 'Tuesday',
-      date: 'May 6th',
-      imageUrl: '/picnic.png',
-      location: 'Golden Gate Park',
-      interestedPeople: ['jordan', 'nina', 'alex'],
     },
     sail: {
       title: 'Sailing',

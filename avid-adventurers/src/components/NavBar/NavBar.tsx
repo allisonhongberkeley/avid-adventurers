@@ -7,12 +7,12 @@ export const NavBar: React.FC = () => {
 
   return (
     <NavWrapper>
-      <OptionWrapper onClick={() => navigate("/Home")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/home")} style={{ cursor: 'pointer' }}>
         <NavText>Home</NavText>
         <Icon src="/Home.png" alt="home page icon" />
       </OptionWrapper>
 
-      <OptionWrapper onClick={() => navigate("/tempBucket")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/bucket")} style={{ cursor: 'pointer' }}>
         <NavText>Bucketlist</NavText>
         <Icon src="/Bucketlist.png" alt="bucket list page icon" />
       </OptionWrapper>
@@ -22,7 +22,7 @@ export const NavBar: React.FC = () => {
         <Icon src="/Calendar.png" alt="my events page icon" />
       </OptionWrapper>
 
-      <OptionWrapper onClick={() => navigate("/chat")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/inbox")} style={{ cursor: 'pointer' }}>
         <NavText>Inbox</NavText>
         <Icon src="/Inbox.png" alt="inbox page icon" />
       </OptionWrapper>

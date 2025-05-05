@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
+  align-items: flex-start;
   padding-bottom: 1rem;
 `;
 
@@ -16,7 +18,8 @@ export const DropdownHeader = styled.div<{ isOpen: boolean }>`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-
+  width: 200px;
+  background-color: white;
 `;
 
 export const DropdownList = styled.ul`
