@@ -6,61 +6,48 @@ import { DropdownSelect } from '../../components/DropdownSelect/DropdownSelect';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const convertTo24Hour = (time: string): number => {
-  const trimmed = time.trim().toLowerCase();
-  const timePattern = /^(\d{1,2})(am|pm)$/;
-  const match = trimmed.match(timePattern);
-  if (match) {
-    let [, hourStr, period] = match;
-    let hour = parseInt(hourStr, 10);
-    if (period === 'pm' && hour !== 12) hour += 12;
-    if (period === 'am' && hour === 12) hour = 0;
-    return hour;
-  }
-  const numericHour = parseInt(trimmed, 10);
-  if (!isNaN(numericHour) && numericHour >= 0 && numericHour <= 23) {
-    return numericHour;
-  }
-  return 0;
-};
-
 const Add = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: '',
     description: '',
     with: '',
-    startHour: '',
-    endHour: '',
+    startTime: '',
+    endTime: '',
     dayOfWeek: '',
   });
 
   const handleInputChange = (field: string, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
-
-  const handleAddEvent = () => {
-    const startHour = convertTo24Hour(form.startHour);
-    const endHour = convertTo24Hour(form.endHour);
+  
+  const handleAddEvent = async () => {
+    const startTime = form.startTime;
+    const endTime = form.endTime;
     const dayIndex = days.indexOf(form.dayOfWeek);
-
-    if (dayIndex === -1) {
-      alert('Invalid day');
+    const imageUrl = `https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${encodeURIComponent(form.name)}`;
+  
+    if (dayIndex === -1 || !startTime || !endTime) {
+      alert('Invalid input');
       return;
     }
-
-    if (isNaN(startHour) || isNaN(endHour)) {
-      alert('Invalid time input');
-      return;
-    }
-
-    const newEvent = { ...form, startHour, endHour, day: dayIndex };
+  
+    const newEvent = {
+      name: form.name,
+      description: form.description,
+      with: form.with,
+      startTime: form.startTime,
+      endTime: form.endTime,
+      day: dayIndex,
+      imageUrl: imageUrl,
+    };
+  
     const stored = JSON.parse(localStorage.getItem('calendarEvents') || '{}');
-
     stored[dayIndex] = [...(stored[dayIndex] || []), newEvent];
     localStorage.setItem('calendarEvents', JSON.stringify(stored));
     navigate('/calendar/upcoming');
   };
+  
 
   const handleCancel = () => {
     navigate('/calendar/upcoming');
@@ -100,15 +87,18 @@ const Add = () => {
       </div>
 
       <LabeledInput
-        label="Start Hour (e.g., 9am, 2pm)"
-        value={form.startHour}
-        onChange={(e) => handleInputChange('startHour', e.target.value)}
+        label="Start Time"
+        type="time"
+        value={form.startTime}
+        onChange={(e) => handleInputChange('startTime', e.target.value)}
       />
       <LabeledInput
-        label="End Hour (e.g., 9am, 2pm)"
-        value={form.endHour}
-        onChange={(e) => handleInputChange('endHour', e.target.value)}
+        label="End Time"
+        type="time"
+        value={form.endTime}
+        onChange={(e) => handleInputChange('endTime', e.target.value)}
       />
+
       <ContinueButton onClick={handleAddEvent}>
         Save Event
       </ContinueButton>

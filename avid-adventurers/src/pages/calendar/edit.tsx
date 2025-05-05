@@ -8,9 +8,10 @@ type Event = {
   name: string;
   description: string;
   with: string;
-  startHour: number;
-  endHour: number;
+  startTime: string; // HH:mm
+  endTime: string;
   day: number;
+  imageUrl: string;
 };
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -46,9 +47,10 @@ const Edit = () => {
     name: '',
     description: '',
     with: '',
-    startHour: '',
-    endHour: '',
+    startTime: '',
+    endTime: '',
     dayOfWeek: '',
+    imageUrl: '',
   });
 
   useEffect(() => {
@@ -58,85 +60,91 @@ const Edit = () => {
         name: storedEvent.name,
         description: storedEvent.description,
         with: storedEvent.with,
-        startHour: convertTo12Hour(storedEvent.startHour),
-        endHour: convertTo12Hour(storedEvent.endHour),
+        startTime: storedEvent.startTime,
+        endTime: storedEvent.endTime,
         dayOfWeek: days[storedEvent.day],
+        imageUrl: storedEvent.imageUrl || '',
       });
     }
   }, []);
 
-  const handleAddEvent = () => {
-    const startHour = convertTo24Hour(form.startHour);
-    const endHour = convertTo24Hour(form.endHour);
-    const dayIndex = days.indexOf(form.dayOfWeek);
+  const parseHour = (time: string): number => {
+    const [hourStr] = time.split(':');
+    return parseInt(hourStr, 10);
+  };
 
-    if (dayIndex === -1) {
-      alert('Invalid day');
+  const handleAddEvent = () => {
+    const dayIndex = days.indexOf(form.dayOfWeek);
+  
+    if (dayIndex === -1 || !form.startTime || !form.endTime) {
+      alert('Invalid input');
       return;
     }
-
+  
     const updatedEvent: Event = {
       name: form.name,
       description: form.description,
       with: form.with,
-      startHour,
-      endHour,
+      startTime: form.startTime,
+      endTime: form.endTime,
       day: dayIndex,
+      imageUrl: form.imageUrl,
     };
-
+  
     const original: Event = JSON.parse(localStorage.getItem('originalEvent') || '{}');
     const stored: { [key: number]: Event[] } = JSON.parse(localStorage.getItem('calendarEvents') || '{}');
-
+  
     stored[original.day] = (stored[original.day] || []).filter((event: Event) =>
       !(
         event.name === original.name &&
-        event.startHour === original.startHour &&
-        event.endHour === original.endHour &&
+        event.startTime === original.startTime &&
+        event.endTime === original.endTime &&
         event.day === original.day
       )
     );
-
+  
     if (!stored[dayIndex]) stored[dayIndex] = [];
     stored[dayIndex].push(updatedEvent);
-
+  
     localStorage.setItem('calendarEvents', JSON.stringify(stored));
-
-    
     localStorage.removeItem('eventToEdit');
     localStorage.removeItem('originalEvent');
     navigate('/calendar/upcoming');
   };
+  
 
   const handleDeleteEvent = () => {
     const original: Event = JSON.parse(localStorage.getItem('originalEvent') || '{}');
     const stored: { [key: number]: Event[] } = JSON.parse(localStorage.getItem('calendarEvents') || '{}');
+  
     stored[original.day] = (stored[original.day] || []).filter((event: Event) =>
       !(
         event.name === original.name &&
-        event.startHour === original.startHour &&
-        event.endHour === original.endHour &&
+        event.startTime === original.startTime &&
+        event.endTime === original.endTime &&
         event.day === original.day
       )
     );
-
+  
     localStorage.setItem('calendarEvents', JSON.stringify(stored));
-
+  
     const past: Event[] = JSON.parse(localStorage.getItem('pastEvents') || '[]');
     const updatedPast = past.filter((event: Event) =>
-        !(
+      !(
         event.name === original.name &&
-        event.startHour === original.startHour &&
-        event.endHour === original.endHour &&
+        event.startTime === original.startTime &&
+        event.endTime === original.endTime &&
         event.day === original.day
-        )
+      )
     );
     localStorage.setItem('pastEvents', JSON.stringify(updatedPast));
-
+  
     localStorage.removeItem('eventToEdit');
     localStorage.removeItem('originalEvent');
-
+  
     navigate('/calendar/upcoming');
   };
+  
 
   return (
     <Container>
@@ -159,9 +167,19 @@ const Edit = () => {
         />
       </div>
 
-      <LabeledInput label="Start Hour (e.g., 9am, 2pm)" value={form.startHour} onChange={(e) => setForm({ ...form, startHour: e.target.value })} />
-      <LabeledInput label="End Hour (e.g., 9am, 2pm)" value={form.endHour} onChange={(e) => setForm({ ...form, endHour: e.target.value })} />
-      
+      <LabeledInput
+        label="Start Time"
+        type="time"
+        value={form.startTime}
+        onChange={(e) => setForm({ ...form, startTime: e.target.value })}
+      />
+
+      <LabeledInput
+        label="End Time"
+        type="time"
+        value={form.endTime}
+        onChange={(e) => setForm({ ...form, endTime: e.target.value })}
+      />
       <ContinueButton onClick={handleAddEvent}>Save Event</ContinueButton>
 
       <ContinueButton
