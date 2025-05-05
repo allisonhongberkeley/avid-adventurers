@@ -147,8 +147,12 @@ const Upcoming = () => {
         />
       </div>
       {JSON.parse(localStorage.getItem('pastEvents') || '[]').map((event: Event, index: number) => (
-        <div key={`${event.name}-${event.startHour}-${index}`} style={{ marginBottom: '16px' }}>
-          <EventBox
+        <div
+            key={`${event.name}-${event.startHour}-${index}`}
+            style={{ marginBottom: '16px', cursor: 'pointer' }}
+            onClick={() => handleEdit(event)}
+        >
+            <EventBox
             time={`${formatTime(event.startHour)} until ${formatTime(event.endHour)}`}
             weekday={days[event.day]}
             date={getNextDate(event.day)}
@@ -156,9 +160,10 @@ const Upcoming = () => {
             location={`with ${event.with}`}
             imageUrl={`https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${event.name}`}
             link="#"
-          />
+            />
         </div>
-      ))}
+        ))}
+
     </Container>
   );
 };

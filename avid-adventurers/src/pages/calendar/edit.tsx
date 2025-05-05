@@ -100,6 +100,8 @@ const Edit = () => {
     stored[dayIndex].push(updatedEvent);
 
     localStorage.setItem('calendarEvents', JSON.stringify(stored));
+
+    
     localStorage.removeItem('eventToEdit');
     localStorage.removeItem('originalEvent');
     navigate('/calendar/upcoming');
@@ -118,6 +120,17 @@ const Edit = () => {
     );
 
     localStorage.setItem('calendarEvents', JSON.stringify(stored));
+
+    const past: Event[] = JSON.parse(localStorage.getItem('pastEvents') || '[]');
+    const updatedPast = past.filter((event: Event) =>
+        !(
+        event.name === original.name &&
+        event.startHour === original.startHour &&
+        event.endHour === original.endHour &&
+        event.day === original.day
+        )
+    );
+    localStorage.setItem('pastEvents', JSON.stringify(updatedPast));
 
     localStorage.removeItem('eventToEdit');
     localStorage.removeItem('originalEvent');
