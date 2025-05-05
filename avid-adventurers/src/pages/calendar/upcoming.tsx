@@ -99,8 +99,6 @@ const Upcoming = () => {
     });
     navigate('/survey/congrats');
   };
-  
-  
 
   return (
     <Container>
@@ -119,6 +117,7 @@ const Upcoming = () => {
               date={getNextDate(event.day)}
               title={event.name}
               location={`with ${event.with}`}
+              imageUrl={`https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${event.name}`}
               link="#"
             />
             {buttonVisible[eventKey] && (
@@ -143,6 +142,7 @@ const Upcoming = () => {
           date="May 5"
           title="Sunrise Picnic at GGP"
           location="with Alice"
+          imageUrl={`https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${'Sunrise Picnic at GGP'}`}
           link="#"
         />
       </div>
@@ -154,6 +154,7 @@ const Upcoming = () => {
             date={getNextDate(event.day)}
             title={event.name}
             location={`with ${event.with}`}
+            imageUrl={`https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${event.name}`}
             link="#"
           />
         </div>
