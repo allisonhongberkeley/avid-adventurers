@@ -36,19 +36,19 @@ const Interested: React.FC = () => {
                 label={`Last time you and\n${friendName} went ${activity}.\n\nWant to try something\nnew next time?`}
                 multiline = {true}
                 >
-            <DropdownSelect
-                label="Try Something New"
-                options={["Try Something New", `${capFirst(activity)} Again`, "Open to Anything"]}
-                selected={selected}
-                setSelected={setSelected}
+                <DropdownSelect
+                    label="Try Something New"
+                    options={["Try Something New", `${capFirst(activity)} Again`, "Open to Anything"]}
+                    selected={selected}
+                    setSelected={setSelected}
                 />
-            <ContinueButton style={{ margin: '0 auto', marginBottom: '25px' }} onClick={handleContinue}>
-                Continue
-            </ContinueButton>
         </Label>
         <ProgressBar totalSteps={3} currentStep={2} />
         <ButtonRow style={{ maxWidth: '350px' }}>
             <BackButton onClick={handleBack}>Back</BackButton> 
+            <ContinueButton onClick={handleContinue}>
+                Continue
+            </ContinueButton>
         </ButtonRow>
     </FormWrapper>
     </Container>

@@ -7,14 +7,19 @@ export const NavBar: React.FC = () => {
 
   return (
     <NavWrapper>
-      <OptionWrapper onClick={() => navigate("/Home")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/home")} style={{ cursor: 'pointer' }}>
         <NavText>Home</NavText>
         <Icon src="/Home.png" alt="home page icon" />
       </OptionWrapper>
 
-      <OptionWrapper onClick={() => navigate("/Bucket")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/bucket")} style={{ cursor: 'pointer' }}>
         <NavText>Bucketlist</NavText>
         <Icon src="/Bucketlist.png" alt="bucket list page icon" />
+      </OptionWrapper>
+
+      <OptionWrapper onClick={() => navigate("/calendar/upcoming")} style={{ cursor: 'pointer' }}>
+        <NavText>My Events</NavText>
+        <Icon src="/Calendar.png" alt="my events page icon" />
       </OptionWrapper>
 
       <OptionWrapper onClick={() => navigate("/inbox")} style={{ cursor: 'pointer' }}>
