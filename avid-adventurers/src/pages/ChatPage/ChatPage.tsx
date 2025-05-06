@@ -28,8 +28,12 @@ type Message = {
 
 type AIResponse = {
     key: 'Yes' | 'No';
-    text: string;
-};
+    text: {
+      'Event Name': string;
+      'Day of the Week': ' ' | 'Sunday' | 'Monday' | 'Tuesday' |'Wednesday' |'Thursday' |'Friday' | 'Saturday';
+      'Start Time': string;
+    };
+  };
 
 const ChatPage: React.FC = () => {
     const [inputText, setInputText] = useState('');
@@ -38,10 +42,12 @@ const ChatPage: React.FC = () => {
     const [userId] = useState(() => crypto.randomUUID());
     const [calendarPrompt, setCalendarPrompt] = useState('');
     const [showCalendarPrompt, setShowCalendarPrompt] = useState(false);
-    const [showHangoutPrompt, setShowHangoutPrompt] = useState(false);
+    const [day, setDay] = useState('');
+    const [eventName, setEventName] = useState('');
+    const [startTime, setStartTime] = useState('');
     const { firstName } = useOnboarding();
     const navigate = useNavigate();
-    const apiKey = process.env.REAGANT_API_KEY;
+    const apiKey = process.env.REACT_APP_REAGANT_API_KEY;
 
     /* [TODO] Hardcoded the contactName to be the other user's name. Fix after Inbox is built*/
     const contactName = firstName === 'Claire' ? 'Tyler' : 'Claire';
@@ -67,22 +73,40 @@ const ChatPage: React.FC = () => {
         };
     }, [userId]);
 
+    const convertToTimeFormat = (timeStr: string): string => {
+        const time = timeStr.trim().toLowerCase();
+        const match = time.match(/^(\d{1,2})(:(\d{2}))?\s*(am|pm)?$/);
+      
+        if (!match) return '';
+      
+        let hour = parseInt(match[1], 10);
+        let minutes = match[3] ? parseInt(match[3], 10) : 0;
+        const period = match[4];
+      
+        if (period === 'pm' && hour < 12) hour += 12;
+        if (period === 'am' && hour === 12) hour = 0;
+      
+        const pad = (num: number) => num.toString().padStart(2, '0');
+        return `${pad(hour)}:${pad(minutes)}`;
+      };
+
     const acceptCalendarInvite = () => {
         setShowCalendarPrompt(false);
-        setShowHangoutPrompt(true);
+        /* Prefill Add Event info and route to /upcoming/add*/
+        console.log(eventName, day, contactName, startTime);
+        navigate('/calendar/add', {
+            state: {
+              eventName,
+              day,
+              contactName,
+              startTime,
+            },
+        });
     };
 
     const denyCalendarInvite = () => {
         setShowCalendarPrompt(false);
     };
-
-    const acceptHangout = () => {
-        navigate('/survey/congrats');
-    };
-
-    const denyHangout = () => {
-        setShowHangoutPrompt(false);
-    }
 
     const handleBack = () => {
         navigate('/home');
@@ -109,21 +133,29 @@ const ChatPage: React.FC = () => {
         const newChatLog = [...chatLog, newMessage];
         const aiMessage = await fetchMessageResponse(newChatLog.slice(-2));
         console.log(aiMessage);
-        if (aiMessage.key ==='Yes') {
-            console.log("AI suggested a calendar invite");
-            setShowCalendarPrompt(true);
-            setCalendarPrompt(aiMessage.text);
+        const capitalizeFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+        if (aiMessage.key === 'Yes') {
+        let day = capitalizeFirst(aiMessage.text['Day of the Week']);
+        let event_name = capitalizeFirst(aiMessage.text['Event Name']);
+        const start_time = aiMessage.text['Start Time'];
+
+        setDay(day);
+        setEventName(event_name);
+        setStartTime(convertToTimeFormat(start_time));
+
+        setShowCalendarPrompt(true);
+        setCalendarPrompt(`Do you want to add ${event_name} on ${day} at ${start_time} to your Calendar?`);
         }
       };
-      
 
-      /* Based on the last two Chat Logs, decide to send calendar invite or not. After u
-      ser clicks Yes to Calendar invite, send "Did you hang out?" redirect. */
+      /* Based on the last two Chat Logs, decide to send calendar invite or not. */
+
       const fetchMessageResponse = async (conversationHistory: Message[]): Promise<AIResponse> => {
-        /* We need to convert the conversation to a string so that it's parsed correctly by Reagant*/
         const conversationString = conversationHistory
-            .map((msg) => `${msg.sender}: ${msg.text}`)
-            .join('\n');
+          .map((msg) => `${msg.sender}: ${msg.text}`)
+          .join('\n');
+      
         console.log(conversationString);
         try {
           const response = await fetch('https://noggin.rea.gent/smiling-tarantula-4597', {
@@ -138,20 +170,33 @@ const ChatPage: React.FC = () => {
           });
       
           const data = await response.json();
-          const signal = Object.keys(data)[0];
+          console.log(data);
       
-          if (signal === 'Yes' || signal === 'No') {
-            return { key: signal, text: data[signal] };
+          const confirmation = data.confirmation;
+          const answer = data.answer;
+      
+          if ((confirmation === 'Yes' || confirmation === 'No') && typeof answer === 'object') {
+            return {
+              key: confirmation,
+              text: answer,
+            };
           } else {
-            throw new Error(`Unexpected AI signal: ${signal}`);
+            throw new Error('Unexpected structure in AI response');
           }
       
         } catch (error) {
           console.error('Error fetching AI response:', error);
-          return { key: 'No', text: 'Sorry, something went wrong.' };
+          return {
+            key: 'No',
+            text: {
+              'Event Name': '',
+              'Day of the Week': ' ',
+              'Start Time': '',
+            },
+          };
         }
-      };      
-          
+      };
+
     return (
         <ChatContainer>
             <Header>
@@ -200,15 +245,6 @@ const ChatPage: React.FC = () => {
                         onNo={denyCalendarInvite}
                     />
                 )}
-
-                {showHangoutPrompt && (
-                    <MessageWithOptions
-                        text="Did the hangout happen?"
-                        onYes={acceptHangout}
-                        onNo={denyHangout}
-                    />
-                )}
-
             </MessageArea>
             <InputArea>
                 <TextInput

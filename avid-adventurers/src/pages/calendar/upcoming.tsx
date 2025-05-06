@@ -8,7 +8,6 @@ type Event = {
   name: string;
   with: string;
   startTime: string;
-  endTime: string;
   description: string;
   day: number;
   imageUrl: string;
@@ -119,7 +118,7 @@ const Upcoming = () => {
             onClick={() => handleEdit(event)}
           >
             <EventBox
-              time={`${formatTime(event.startTime)} until ${formatTime(event.endTime)}`}
+              time={`${formatTime(event.startTime)}`}
               weekday={days[event.day]}
               date={getNextDate(event.day)}
               title={event.name}
@@ -144,7 +143,7 @@ const Upcoming = () => {
       <h1 className="text-lg font-semibold mt-8 mb-2">Past Events</h1>
       <div style={{ marginBottom: '16px' }}>
         <EventBox
-          time="5AM until 10AM"
+          time="5AM"
           weekday="Monday"
           date="May 5"
           title="Sunrise Picnic at GGP"
@@ -160,7 +159,7 @@ const Upcoming = () => {
             onClick={() => handleEdit(event)}
         >
             <EventBox
-            time={`${formatTime(event.startTime)} until ${formatTime(event.endTime)}`}
+            time={`${formatTime(event.startTime)}`}
             weekday={days[event.day]}
             date={getNextDate(event.day)}
             title={event.name}

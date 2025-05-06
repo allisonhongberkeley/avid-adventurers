@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const DropdownHeader = styled.div<{ isOpen: boolean }>`
+  width: 100%;
   padding: 10px;
   border: 2px solid black;
   border-radius: ${({ isOpen }) => (isOpen ? '8px 8px 0 0' : '8px')};
@@ -18,7 +19,6 @@ export const DropdownHeader = styled.div<{ isOpen: boolean }>`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  width: 200px;
   background-color: white;
 `;
 

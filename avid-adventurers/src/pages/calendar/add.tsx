@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { LabeledInput } from '../../components/LabeledInput/LabeledInput';
 import { ContinueButton, Container } from '../styles';
 import { DropdownSelect } from '../../components/DropdownSelect/DropdownSelect';
@@ -8,26 +8,33 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 const Add = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const state = location.state as {
+    eventName?: string;
+    day?: string;
+    contactName?: string;
+    startTime?: string;
+  };
   const [form, setForm] = useState({
-    name: '',
+    name: state?.eventName || '',
     description: '',
-    with: '',
-    startTime: '',
-    endTime: '',
-    dayOfWeek: '',
+    with: state?.contactName || '',
+    startTime: state?.startTime || '',
+    dayOfWeek: state?.day || '',
   });
 
   const handleInputChange = (field: string, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
+
+    console.log(form.startTime);
   };
   
   const handleAddEvent = async () => {
     const startTime = form.startTime;
-    const endTime = form.endTime;
     const dayIndex = days.indexOf(form.dayOfWeek);
     const imageUrl = `https://noggin.rea.gent/puzzled-duck-3240?key=rg_v1_c9ixtwk8a5nxk68ybfkp4y5g42dndjehnvrz_ngk&image=${encodeURIComponent(form.name)}`;
   
-    if (dayIndex === -1 || !startTime || !endTime) {
+    if (dayIndex === -1 || !startTime) {
       alert('Invalid input');
       return;
     }
@@ -37,7 +44,6 @@ const Add = () => {
       description: form.description,
       with: form.with,
       startTime: form.startTime,
-      endTime: form.endTime,
       day: dayIndex,
       imageUrl: imageUrl,
     };
@@ -91,12 +97,6 @@ const Add = () => {
         type="time"
         value={form.startTime}
         onChange={(e) => handleInputChange('startTime', e.target.value)}
-      />
-      <LabeledInput
-        label="End Time"
-        type="time"
-        value={form.endTime}
-        onChange={(e) => handleInputChange('endTime', e.target.value)}
       />
 
       <ContinueButton onClick={handleAddEvent}>
