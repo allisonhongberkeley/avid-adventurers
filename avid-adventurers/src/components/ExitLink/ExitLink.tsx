@@ -2,11 +2,15 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ExitButton } from './styles';
 
-export const Exit: React.FC = () => {
+interface ExitProps {
+  link: string;
+}
+
+export const ExitLink: React.FC<ExitProps> = ({ link }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(-1); // Navigate back to the previous page
+    navigate(link);
   };
 
   return (

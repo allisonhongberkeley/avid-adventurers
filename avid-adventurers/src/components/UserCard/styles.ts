@@ -1,23 +1,5 @@
 import styled from 'styled-components';
 
-export const WelcomeTitle = styled.h1`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-`;
-
-export const UserName = styled.h2`
-  font-size: 1.25rem;
-  margin: 1rem 0;
-`;
-
-export const LocationText = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-`;
-
 export const PageWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -25,7 +7,7 @@ export const PageWrapper = styled.div`
   height: 100%; 
 `;
 
-export const Card = styled.div`
+export const Card = styled.div<{ feedbackColor?: string; isTransitioning?: boolean }>`
   display: flex;
   flex-direction: column;
   max-width: 350px;
@@ -123,3 +105,4 @@ export const Button = styled.button`
     background-color: #1b1b1b;
   }
 `;
+

@@ -6,16 +6,21 @@ interface ProfileBoxProps {
   imageUrl: string;
   name: string;
   link: string;
+  onPass?: () => void;
+  onMatch?: () => void;
 }
 
 export const ProfileBox: React.FC<ProfileBoxProps> = ({
   imageUrl,
   name,
   link,
+  onPass,
+  onMatch,
 }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    console.log(link);
     navigate(link);
   };
 

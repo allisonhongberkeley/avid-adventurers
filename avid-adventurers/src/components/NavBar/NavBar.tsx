@@ -27,7 +27,7 @@ export const NavBar: React.FC = () => {
         <Icon src="/Inbox.png" alt="inbox page icon" />
       </OptionWrapper>
 
-      <OptionWrapper onClick={() => navigate("/onboarding/profileDisplay")} style={{ cursor: 'pointer' }}>
+      <OptionWrapper onClick={() => navigate("/profileview")} style={{ cursor: 'pointer' }}>
         <NavText>Profile</NavText>
         <Icon src="/Profile.png" alt="profile page icon" />
       </OptionWrapper>

@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useOnboarding } from '../../../utils/onboardingContext';
-import { interestIcons } from '../../../utils/Interests';
+import { useOnboarding } from '../utils/onboardingContext';
+import { interestIcons } from '../utils/Interests';
 
 import {
-  PageWrapper,
   Card,
   Title,
   Avatar,
@@ -15,26 +14,24 @@ import {
   Name,
   AvatarDiv,
   ProfileText,
+  Container,
 } from './styles';
 
-import { ExitLink } from '../../../components/ExitLink/ExitLink';
-import { InterestsList, InterestTag } from '../../styles';
-import ProgressBar from '../../../components/ProgressBar/ProgressBar';
+import { NavBar } from '../components/NavBar/NavBar';
+import { ExitLink } from '../components/ExitLink/ExitLink';
+import { InterestsList, InterestTag } from './styles';
+import ProgressBar from '../components/ProgressBar/ProgressBar';
 
-const ProfileDisplay: React.FC = () => {
+const ProfileView: React.FC = () => {
   const navigate = useNavigate();
   const { firstName, city, profileImage, interests, age, pronouns } = useOnboarding();
 
-  const handleContinue = () => {
-    navigate('/home');
-  };
-
-  const handleBack = () => {
-    navigate('/onboarding/interests');
+  const handleClick = () => {
+    navigate('/onboarding/profile');
   };
 
   return (
-    <PageWrapper>
+    <Container>
       <Card>
         <Title>Welcome to Meetropolis, {firstName}!</Title>
 
@@ -65,15 +62,12 @@ const ProfileDisplay: React.FC = () => {
           ))}
         </InterestsList>
 
-        <ProgressBar totalSteps={3} currentStep={3} />
 
-        <ButtonGroup>
-          <Button onClick={handleBack}>Back</Button>
-          <Button onClick={handleContinue}>Continue</Button>
-        </ButtonGroup>
+      <Button onClick={handleClick}>Edit Profile</Button>
       </Card>
-    </PageWrapper>
+      <NavBar />
+    </Container>
   );
 };
 
-export default ProfileDisplay;
+export default ProfileView;

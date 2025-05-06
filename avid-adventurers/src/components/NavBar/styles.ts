@@ -11,6 +11,7 @@ export const NavWrapper = styled.nav`
   bottom: 0;
   width: 100%;
   max-width: 400px;
+  z-index: 100;
 `;
 
 export const OptionWrapper = styled.div`
