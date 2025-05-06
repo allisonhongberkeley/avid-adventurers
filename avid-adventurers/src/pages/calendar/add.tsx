@@ -78,7 +78,7 @@ const Add = () => {
         onChange={(e) => handleInputChange('with', e.target.value)}
       />
 
-      <div style={{ width: '350px', maxWidth: '100%' }}>
+      <div style={{ width: '100%', maxWidth: '350px' }}>
         <DropdownSelect
             label="Day of Week"
             options={days}

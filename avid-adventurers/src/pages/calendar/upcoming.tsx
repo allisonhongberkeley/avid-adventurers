@@ -169,7 +169,8 @@ const Upcoming = () => {
             />
         </div>
         ))}
-
+    <br></br>
+    <br></br>
     <NavBar />
     </Container>
   );
