@@ -89,20 +89,17 @@ export const ButtonGroup = styled.div`
   margin-top: 2rem;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{ isActive?: boolean; activeColor?: string }>`
   flex: 1;
   padding: 1rem;
   border-radius: 8px;
   border: 3px solid #1b1b1b;
-  background-color: #fff;
+  background-color: ${({ isActive }) => (isActive ? '#333' : '#fff')};
+  color: ${({ isActive }) => (isActive ? '#fff' : '#1b1b1b')};
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
-
-  &:hover {
-    color: #fff;
-    background-color: #1b1b1b;
-  }
 `;
+
 

@@ -169,3 +169,12 @@ export const NavIcon = styled.span`
   min-width: 18px; /* Match badge width for alignment */
   text-align: center; /* Center the '>' */
 `; 
+
+export const AvatarImage = styled.img`
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  margin-right: 15px;
+`;

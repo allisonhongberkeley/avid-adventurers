@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { eventData } from '../../utils/eventData';
 import { EventPage } from '../../components/EventPage/EventPage';
 import { ProfileBox } from '../../components/ProfileBox/ProfileBox';
-import { Container, FormWrapperLeft, ScrollContainer, Title2, ButtonRow, ContinueButton } from '../styles';
+import { Container, FormWrapperLeft, ScrollContainerPeople, Title2, ButtonRow, ContinueButton } from '../styles';
 import { useBucketlist } from '../../utils/bucketlistContext';
 import { useOnboarding } from '../../utils/onboardingContext'; 
 
@@ -73,7 +73,7 @@ const EventDetails: React.FC = () => {
         <br />
         <br />
         <Title2>Also interested</Title2>
-        <ScrollContainer ref={scrollRef} style={{ scrollBehavior: 'smooth' }}>
+        <ScrollContainerPeople ref={scrollRef} style={{ scrollBehavior: 'smooth' }}>
           {displayedPeople.map(({ name, link, imageUrl }) => (
             <ProfileBox
               key={name}
@@ -82,7 +82,7 @@ const EventDetails: React.FC = () => {
               link={link}
             />
           ))}
-        </ScrollContainer>
+        </ScrollContainerPeople>
         <br />
         <ButtonRow>
           <ContinueButton

@@ -70,7 +70,10 @@ const EventUserCard: React.FC<EventUserCardProps> = ({
     setIsTransitioning(true);
 
     setTimeout(() => {
-      if (isLastUser) {
+      if (actionType === 'match' && name.toLowerCase() === 'tyler') {
+        navigate('/inbox');
+      }
+      else if (isLastUser) {
         navigate(`/events/${eventSlug}`);
       } else {
         navigate(`/events/${eventSlug}/people/${nextUserSlug}`);
@@ -95,7 +98,7 @@ const EventUserCard: React.FC<EventUserCardProps> = ({
               ? '3px solid green'
               : 'none'
             : 'none',
-          transition: 'opacity 0.5s ease, transform 0.5s ease',
+          transition: 'opacity 0.8s ease, transform 0.8s ease',
           opacity: isTransitioning ? 0 : 1,
           transform: isTransitioning ? 'scale(0.95)' : 'scale(1)',
         }}
@@ -128,8 +131,18 @@ const EventUserCard: React.FC<EventUserCardProps> = ({
         </InterestsList>
 
         <ButtonGroup>
-          <Button onClick={() => handlePassOrMatch('pass')}>Pass</Button>
-          <Button onClick={() => handlePassOrMatch('match')}>Match</Button>
+          <Button
+            onClick={() => handlePassOrMatch('pass')}
+            isActive={isTransitioning && action === 'pass'}
+          >
+          Pass
+          </Button>
+          <Button
+              onClick={() => handlePassOrMatch('match')}
+              isActive={isTransitioning && action === 'match'}
+            >
+          Match
+          </Button>
         </ButtonGroup>
       </Card>
     </PageWrapper>
