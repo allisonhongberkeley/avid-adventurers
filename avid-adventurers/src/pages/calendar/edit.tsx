@@ -8,38 +8,12 @@ type Event = {
   name: string;
   description: string;
   with: string;
-  startTime: string; // HH:mm
-  endTime: string;
+  startTime: string; /* hh:mm */
   day: number;
   imageUrl: string;
 };
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-const convertTo12Hour = (hour: number): string => {
-  const period = hour >= 12 ? 'pm' : 'am';
-  let formattedHour = hour % 12;
-  formattedHour = formattedHour === 0 ? 12 : formattedHour;
-  return `${formattedHour}${period}`;
-};
-
-const convertTo24Hour = (time: string): number => {
-  const trimmed = time.trim().toLowerCase();
-  const timePattern = /^(\d{1,2})(am|pm)$/;
-  const match = trimmed.match(timePattern);
-  if (match) {
-    let [, hourStr, period] = match;
-    let hour = parseInt(hourStr, 10);
-    if (period === 'pm' && hour !== 12) hour += 12;
-    if (period === 'am' && hour === 12) hour = 0;
-    return hour;
-  }
-  const numericHour = parseInt(trimmed, 10);
-  if (!isNaN(numericHour) && numericHour >= 0 && numericHour <= 23) {
-    return numericHour;
-  }
-  return 0;
-};
 
 const Edit = () => {
   const navigate = useNavigate();
@@ -48,7 +22,6 @@ const Edit = () => {
     description: '',
     with: '',
     startTime: '',
-    endTime: '',
     dayOfWeek: '',
     imageUrl: '',
   });
@@ -61,7 +34,6 @@ const Edit = () => {
         description: storedEvent.description,
         with: storedEvent.with,
         startTime: storedEvent.startTime,
-        endTime: storedEvent.endTime,
         dayOfWeek: days[storedEvent.day],
         imageUrl: storedEvent.imageUrl || '',
       });
@@ -76,7 +48,7 @@ const Edit = () => {
   const handleAddEvent = () => {
     const dayIndex = days.indexOf(form.dayOfWeek);
   
-    if (dayIndex === -1 || !form.startTime || !form.endTime) {
+    if (dayIndex === -1 || !form.startTime) {
       alert('Invalid input');
       return;
     }
@@ -86,7 +58,6 @@ const Edit = () => {
       description: form.description,
       with: form.with,
       startTime: form.startTime,
-      endTime: form.endTime,
       day: dayIndex,
       imageUrl: form.imageUrl,
     };
@@ -98,7 +69,6 @@ const Edit = () => {
       !(
         event.name === original.name &&
         event.startTime === original.startTime &&
-        event.endTime === original.endTime &&
         event.day === original.day
       )
     );
@@ -121,7 +91,6 @@ const Edit = () => {
       !(
         event.name === original.name &&
         event.startTime === original.startTime &&
-        event.endTime === original.endTime &&
         event.day === original.day
       )
     );
@@ -133,7 +102,6 @@ const Edit = () => {
       !(
         event.name === original.name &&
         event.startTime === original.startTime &&
-        event.endTime === original.endTime &&
         event.day === original.day
       )
     );
@@ -172,13 +140,6 @@ const Edit = () => {
         type="time"
         value={form.startTime}
         onChange={(e) => setForm({ ...form, startTime: e.target.value })}
-      />
-
-      <LabeledInput
-        label="End Time"
-        type="time"
-        value={form.endTime}
-        onChange={(e) => setForm({ ...form, endTime: e.target.value })}
       />
       <ContinueButton onClick={handleAddEvent}>Save Event</ContinueButton>
 
