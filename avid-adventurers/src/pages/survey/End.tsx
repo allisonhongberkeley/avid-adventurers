@@ -25,13 +25,13 @@ const End: React.FC = () => {
                 label={`We will update you when we hear back\nfrom ${friendName}!\n\nUntil then, kick back and relax.`}
                 multiline = {true}
                 >
-        <ContinueButton style={{ width: '300px', margin: '0 auto', marginBottom: '25px' }} onClick={handleDone}>
-            Done
-        </ContinueButton>
         </Label>
         <ProgressBar totalSteps={3} currentStep={3} />
         <ButtonRow style={{ maxWidth: '350px' }}> 
             <BackButton onClick={handleBack}>Back</BackButton>
+            <ContinueButton onClick={handleDone}>
+            Done
+        </ContinueButton>
         </ButtonRow>
     </FormWrapper>
     </Container>

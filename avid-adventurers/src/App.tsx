@@ -21,6 +21,9 @@ import Upcoming from './pages/calendar/upcoming';
 import Add from './pages/calendar/add';
 import Edit from './pages/calendar/edit';
 import ProfileCard from './components/ProfileCard/ProfileCard';
+import EventUserDetails from './pages/Users/EventUserDetails';
+import HomeUserDetails from './pages/Users/HomeUserDetails';
+import ProfileView from './pages/ProfileView';
 
 import { OnboardingProvider } from './utils/onboardingContext';
 import { BucketlistProvider } from './utils/bucketlistContext';
@@ -53,11 +56,14 @@ function App() {
               {/* Main app */}
               <Route path="/home" element={<Events />} />
               <Route path="/events/:eventSlug" element={<EventDetails />} />
+              <Route path="/events/:eventSlug/people/:userSlug" element={<EventUserDetails />} />
+              <Route path="/bucket/:eventSlug" element={<EventDetails />} />
+              <Route path="/people/:userSlug" element={<HomeUserDetails />} />
               <Route path="/profileCard" element={<ProfileCard />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/inbox" element={<ChatInbox />} />
               <Route path="/bucket" element={<Bucket />} />
-
+              <Route path="/profileview" element={<ProfileView />} />
               <Route path="/calendar/upcoming" element={<Upcoming />} />
               <Route path="/calendar/add" element={<Add />} />
               <Route path="/calendar/edit" element={<Edit />} />

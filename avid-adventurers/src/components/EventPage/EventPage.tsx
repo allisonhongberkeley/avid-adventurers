@@ -1,6 +1,7 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { HeaderImage, Title, InfoText, PageWrapper, ImageWrapper } from './styles';
-import { Exit } from '../Exit/Exit';
+import { ExitLink } from '../ExitLink/ExitLink';
 
 interface EventPageProps {
   time: string;
@@ -19,11 +20,16 @@ export const EventPage: React.FC<EventPageProps> = ({
   imageUrl,
   location,
 }) => {
+  const locationObj = useLocation();
+  const currentPath = locationObj.pathname;
+
+  const exitLink = currentPath.startsWith('/Bucket/') ? '/bucket' : '/home';
+
   return (
     <PageWrapper>
       <ImageWrapper>
         <HeaderImage src={imageUrl} alt={title} />
-        <Exit link="/home" />
+        <ExitLink link ={exitLink} />
       </ImageWrapper>
       <Title>{title}</Title>
       <InfoText><strong>Location:</strong> {location}</InfoText>

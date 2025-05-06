@@ -44,13 +44,13 @@ const Interested: React.FC = () => {
                 setSelected={setSelected}
                 />
             </div>
-            <ContinueButton style={{ margin: '0 auto', marginBottom: '25px' }} onClick={handleContinue}>
-                Continue
-            </ContinueButton>
         </Label>
         <ProgressBar totalSteps={3} currentStep={2} />
         <ButtonRow style={{ maxWidth: '350px' }}>
             <BackButton onClick={handleBack}>Back</BackButton> 
+            <ContinueButton onClick={handleContinue}>
+                Continue
+            </ContinueButton>
         </ButtonRow>
     </FormWrapper>
     </Container>

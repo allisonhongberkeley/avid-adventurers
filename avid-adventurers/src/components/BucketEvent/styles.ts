@@ -47,7 +47,7 @@ export const HeartIcon = styled.img`
   width: 30px;
   height: 30px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 10;
   background: transparent;
   border: none;
 `;

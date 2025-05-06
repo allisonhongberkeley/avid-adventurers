@@ -18,10 +18,16 @@ export const CardWrapper = styled.div`
 
 
 export const ProfileImage = styled.img`
+  width: 100px;
   height: 100px;
   object-fit: cover;
-  padding-top: 5px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+  padding-top: 3px;
+  padding-bottom: 6px;
 `;
+
 
 export const ProfileTitle = styled.h2`
   font-size: clamp(1.2rem, 1.8vw, 1.6rem);
