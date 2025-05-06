@@ -166,6 +166,7 @@ export const ScrollContainerPeople = styled.div`
   width: 98%;
   box-sizing: border-box;
   scroll-snap-type: x mandatory;
+  min-height: 200px;
 
   & > * {
     scroll-snap-align: start;
@@ -190,7 +191,7 @@ export const ScrollContainerEvents = styled.div`
   width: 98%;
   box-sizing: border-box;
   scroll-snap-type: x mandatory;
-  min-height: 400px;
+  min-height: 380px;
   margin-top: 10px;
 
   & > * {
@@ -345,6 +346,14 @@ export const SearchRow = styled.div`
   flex-direction: row;
   gap: 30px;
   width: 100%;
+`;
+
+export const HeaderRow = styled.div`
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
 `;
 
 export const SearchInputContainer = styled.div`

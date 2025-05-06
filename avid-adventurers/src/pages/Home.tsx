@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { EventBox } from '../components/EventBox/EventBox';
 import { useOnboarding } from '../utils/onboardingContext';
 import { NavBar } from '../components/NavBar/NavBar';
-import { Container, FormWrapperLeft, ScrollContainerEvents, ScrollContainerPeople, Title, Title3, SearchRow, SearchInputContainer, SearchIconImage, SearchInputField } from './styles';
+import { Container, HeaderRow, FormWrapperLeft, ScrollContainerEvents, ScrollContainerPeople, Title, Title3, SearchRow, SearchInputContainer, SearchIconImage, SearchInputField } from './styles';
 import { ProfileBox } from '../components/ProfileBox/ProfileBox';
 import { eventData } from '../utils/eventData';
 import { userData } from '../utils/userData';
