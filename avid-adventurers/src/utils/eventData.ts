@@ -52,7 +52,7 @@ export interface EventDetails {
         date: 'May 12th',
         imageUrl: '/skateboarding.png',
         location: 'Potrero del Sol',
-        interestedPeople: ['tyler', 'maya'],
+        interestedPeople: ['jordan', 'tyler'],
     },
   };
   

@@ -12,6 +12,12 @@ export const Title = styled.h1`
   text-align: center;
 `;
 
+export const Title3 = styled.h1`
+  margin-bottom: 1rem;
+  text-align: center;
+  white-space: nowrap;
+`;
+
 export const Title2 = styled.h2`
   margin-bottom: 2rem;
   text-align: center;
@@ -152,15 +158,40 @@ export const PhoneContainer = styled.div`
   position: relative;
 `;
 
-export const ScrollContainer = styled.div`
+export const ScrollContainerPeople = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
   overflow-x: auto;
-  padding: 16px;
   width: 98%;
   box-sizing: border-box;
   scroll-snap-type: x mandatory;
+
+  & > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+  }
+`;
+
+export const ScrollContainerEvents = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  width: 98%;
+  box-sizing: border-box;
+  scroll-snap-type: x mandatory;
+  min-height: 400px;
+  margin-top: 10px;
 
   & > * {
     scroll-snap-align: start;
@@ -305,5 +336,44 @@ export const Button = styled.button`
   &:hover {
     color: #fff;
     background-color: #1b1b1b;
+  }
+`;
+
+export const SearchRow = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+`;
+
+export const SearchInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  flex-shrink: 1; 
+  flex-grow: 0;
+  max-width: 100%; 
+  overflow: hidden;
+`;
+
+export const SearchIconImage = styled.img`
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  opacity: 0.5;
+`;
+
+export const SearchInputField = styled.input`
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  min-width: 0;  /* critical to allow shrinking inside flex */
+  width: 100%;   /* take up container width */
+  &::placeholder {
+    color: #aaa;
   }
 `;

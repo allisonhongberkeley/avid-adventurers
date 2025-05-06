@@ -65,6 +65,7 @@ const ProfileView: React.FC = () => {
 
       <Button onClick={handleClick}>Edit Profile</Button>
       </Card>
+      <br></br>
       <NavBar />
     </Container>
   );

@@ -23,7 +23,7 @@ export interface UserProfile {
         age: 25,
         location: 'Mission District, SF',
         interests: ['yoga', 'board games', 'italian', 'sunset', 'calligraphy'],
-        pronouns: 'they/them',
+        pronouns: 'he/him',
         avatarUrl: '/Alex.png',
     },
     leo: {

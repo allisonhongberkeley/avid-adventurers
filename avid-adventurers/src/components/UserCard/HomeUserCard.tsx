@@ -55,13 +55,12 @@ const HomeUserCard: React.FC<HomeUserCardProps> = ({
   const currentIndex = userSlugs.indexOf(userSlug);
   const nextUserSlug = userSlugs[currentIndex + 1];
 
-  // Handle the transition and navigate
   const handlePassOrMatch = (actionType: 'pass' | 'match') => {
     setAction(actionType);
     setIsTransitioning(true);
 
     setTimeout(() => {
-      if (nextUserSlug) {
+      if (nextUserSlug && nextUserSlug !== 'tyler') {
         navigate(`/people/${nextUserSlug}`);
       } else {
         navigate('/home');
@@ -85,7 +84,7 @@ const HomeUserCard: React.FC<HomeUserCardProps> = ({
               ? '3px solid green'
               : 'none'
             : 'none',
-          transition: 'opacity 0.5s ease, transform 0.5s ease', 
+          transition: 'opacity 0.8s ease, transform 0.8s ease', 
           opacity: isTransitioning ? 0 : 1, 
           transform: isTransitioning ? 'scale(0.95)' : 'scale(1)', 
         }}
@@ -118,8 +117,18 @@ const HomeUserCard: React.FC<HomeUserCardProps> = ({
         </InterestsList>
 
         <ButtonGroup>
-          <Button onClick={() => handlePassOrMatch('pass')}>Pass</Button>
-          <Button onClick={() => handlePassOrMatch('match')}>Match</Button>
+            <Button
+                onClick={() => handlePassOrMatch('pass')}
+                isActive={isTransitioning && action === 'pass'}
+            >
+            Pass
+            </Button>
+            <Button
+                onClick={() => handlePassOrMatch('match')}
+                isActive={isTransitioning && action === 'match'}
+             >
+            Match
+            </Button>
         </ButtonGroup>
       </Card>
     </PageWrapper>

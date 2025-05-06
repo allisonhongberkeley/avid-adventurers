@@ -85,7 +85,7 @@ const ChatPage: React.FC = () => {
     }
 
     const handleBack = () => {
-        navigate('/home');
+        navigate('/inbox');
     };
 
     const handleSend = async (e?: React.KeyboardEvent<HTMLInputElement>) => {
@@ -156,7 +156,7 @@ const ChatPage: React.FC = () => {
         <ChatContainer>
             <Header>
                 <BackButton onClick={handleBack}>{'<'}</BackButton>
-                <ContactName>{contactName}</ContactName>
+                <ContactName>{contactName}</ContactName> 
             </Header>
             <MessageArea>
                 <LeftMessageRow>
