@@ -29,7 +29,7 @@ const SurveyResults: React.FC = () => {
     };
 
     const getRandomTag = (tags: string[]): string => {
-        if (tags.length === 0) return 'your shared interests';
+        if (tags.length === 0) return 'doing more activities';
         return tags[Math.floor(Math.random() * tags.length)];
     };
     const randomTag = useMemo(() => getRandomTag(selectedTags), [selectedTags]);
