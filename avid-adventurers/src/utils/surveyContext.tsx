@@ -9,8 +9,10 @@ interface SurveyData {
   activity: string;
   rating: number;
   setRating: (rating: number) => void;
-  experience: string;
-  setExperience: (experience: string) => void;
+  ratingExperience: string;
+  setRatingExperience: (exp: string) => void;
+  uninterestedReason: string;
+  setUninterestedReason: (reason: string) => void;
   updateInterests: (interests: string[]) => void;
   setProfileImage: (file: File | null) => void;
 }
@@ -28,11 +30,12 @@ export const useSurvey = () => {
 export const SurveyProvider = ({ children }: { children: ReactNode }) => {
     const [friendProfileImage, setProfileImage] = useState<File | null>(null);
     const friendName = 'Tyler';
-    const [friendInterests, setFriendInterests] = useState<string[]>(['skateboarding', 'hiking', 'sail']);
-    const [interests, setInterests] = useState<string[]>(['paddleboarding', 'skateboarding', 'sail', 'hiking', 'coffee', 'wine tasting', 'concerts']); // current user's interests
+    const [friendInterests, setFriendInterests] = useState<string[]>(['skateboarding', 'hiking', 'sailing']);
+    const [interests, setInterests] = useState<string[]>(['paddleboarding', 'skateboarding', 'sailing', 'hiking', 'coffee', 'wine tasting', 'concerts']); // current user's interests
     const activity = 'skateboarding';
     const [rating, setRating] = useState<number>(0);
-    const [experience, setExperience] = useState<string>('');
+    const [ratingExperience, setRatingExperience] = useState<string>('');
+  const [uninterestedReason, setUninterestedReason] = useState<string>('');
   
     const updateInterests = (newInterests: string[]) => {
       setInterests((prev) => Array.from(new Set([...prev, ...newInterests])));
@@ -49,8 +52,10 @@ export const SurveyProvider = ({ children }: { children: ReactNode }) => {
           activity,
           rating,
           setRating,
-          experience,
-          setExperience,
+          ratingExperience,
+          setRatingExperience,
+          uninterestedReason,
+          setUninterestedReason,
           updateInterests,
           setProfileImage,
         }}

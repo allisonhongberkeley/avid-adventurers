@@ -14,10 +14,6 @@ const Profile: React.FC = () => {
       navigate('/onboarding/age');
     };
 
-    const handleBack = () => {
-      navigate('/');
-    }
-
     return (
     <Container>
       <FormWrapper>
@@ -33,14 +29,13 @@ const Profile: React.FC = () => {
           onChange={(e) => setFirstName(e.target.value)}
         />
         <LabeledInput
-          label="Please enter the city you live in:"
-          placeholder="San Francisco"
+          label="Please enter the neighborhood you live in:"
+          placeholder="North Beach"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         <ProgressBar totalSteps={3} currentStep={1} />
         <ButtonRow>
-          <BackButton onClick={handleBack}>Back</BackButton>
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
         </ButtonRow>
       </FormWrapper>

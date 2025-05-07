@@ -7,7 +7,7 @@ import { useSurvey } from '../../utils/surveyContext';
 
 const Congrats: React.FC = () => {
     const navigate = useNavigate();
-    const { friendProfileImage, friendName, friendInterests, activity, interests, rating, setRating, updateInterests, setProfileImage } = useSurvey();
+    const { friendName, activity } = useSurvey();
 
     const handleContinue = () => {
       navigate('/survey/rate');
@@ -25,9 +25,13 @@ const Congrats: React.FC = () => {
             <Label
                     label={`You met ${friendName} for ${activity}!`}
                     multiline = {true}
-                    image = {friendProfileImage}
                     >
-            <ButtonRow style={{ width: '300px', margin: '0 auto', marginBottom: '25px' }}> 
+            <img
+                src="/tyler2.png"
+                alt="tyler profile picture"
+                style={{ width: '100px', height: 'auto', margin: '0 auto', marginTop: '-20px', marginBottom: '11px' }}
+            />
+            <ButtonRow style={{ maxWidth: '300px', margin: '0 auto', marginBottom: '25px' }}> 
                 <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
             </ButtonRow>
             </Label>

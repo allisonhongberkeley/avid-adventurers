@@ -10,31 +10,37 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 const Commonality: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { friendName, friendInterests, setFriendInterests, interests, updateInterests } = useSurvey();
+    const { friendName, friendInterests, setFriendInterests, updateInterests } = useSurvey();
 
     const allTags = [
         'skateboarding',
-        'sail',
+        'sailing',
         'hiking',
         'pickleball',
         'stargazing',
         'football',
     ];
 
+    const [newTags, setNewTags] = useState<string[]>(friendInterests);
+
     const handleAddTag = (tag: string) => {
-        const newTags = [...friendInterests, tag];
-        setFriendInterests(newTags);
-        updateInterests(newTags);
+        const updated = [...newTags, tag];
+        setNewTags(updated);
+        setFriendInterests(updated);
+        updateInterests(updated);
     };
 
     const handleRemoveTag = (tag: string) => {
-        const newTags = friendInterests.filter((t) => t !== tag);
-        setFriendInterests(newTags);
-        updateInterests(newTags);
+        const updated = newTags.filter((t) => t !== tag);
+        setNewTags(updated);
+        setFriendInterests(updated);
+        updateInterests(updated);
     };
 
     const handleContinue = () => {
-        navigate('/survey/end', { state: { from: location.pathname } });
+        navigate('/survey/end', {
+            state: { from: location.pathname, selectedTags: newTags }
+        });
     };
 
     const handleBack = () => {

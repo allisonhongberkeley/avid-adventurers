@@ -15,7 +15,7 @@ import { InterestsList, InterestTag } from '../../pages/styles';
 
 const ProfileCard: React.FC = () => {
 
-  const tylerInterests = ['skateboarding', 'hiking', 'sail', 'pickle ball', 'football', 'stargazing'];
+  const tylerInterests = ['skateboarding', 'hiking', 'sailing', 'pickle ball', 'football', 'stargazing'];
 
   /* Say Tyler's first 3 interest match with us*/
   const tylerSelected = tylerInterests.slice(0, 3);

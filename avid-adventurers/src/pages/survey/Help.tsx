@@ -8,7 +8,7 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 const Help: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { friendProfileImage, friendName, friendInterests, activity, interests, rating, setRating, updateInterests, setProfileImage } = useSurvey();
+    const { friendName } = useSurvey();
 
     const handleYes = () => {
       navigate('/survey/interested');

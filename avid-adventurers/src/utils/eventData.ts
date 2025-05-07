@@ -36,7 +36,7 @@ export interface EventDetails {
       location: 'Arizmendi Bakery',
       interestedPeople: ['alex', 'maya', 'jordan'],
     },
-    sail: {
+    sailing: {
       title: 'Sailing',
       time: '7:00 AM',
       weekday: 'Sunday',
