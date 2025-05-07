@@ -44,7 +44,7 @@ const Age: React.FC = () => {
           value={funFact}
           onChange={(e) => setFunFact(e.target.value)}
         />
-        <ProgressBar totalSteps={3} currentStep={1} />
+        <ProgressBar totalSteps={3} currentStep={2} />
         <ButtonRow>
           <BackButton onClick={handleBack}>Back</BackButton>
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
