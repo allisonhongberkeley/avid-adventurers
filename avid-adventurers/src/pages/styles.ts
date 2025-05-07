@@ -13,6 +13,7 @@ export const Title = styled.h1`
 `;
 
 export const Title3 = styled.h1`
+  margin-top: 1rem;
   margin-bottom: 1rem;
   text-align: center;
   white-space: nowrap;
