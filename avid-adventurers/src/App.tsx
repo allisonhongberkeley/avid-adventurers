@@ -14,6 +14,7 @@ import Uninterested from './pages/survey/Uninterested';
 import Confirmation from './pages/survey/Confirmation';
 import Events from './pages/Home';
 import Chat from './pages/ChatPage/ChatPage';
+import SurveyResults from './pages/ChatPage/SurveyResults';
 import ChatInbox from './pages/ChatInbox/ChatInbox';
 import Bucket from './pages/Bucket';
 import EventDetails from './pages/events/EventDetails';
@@ -61,6 +62,7 @@ function App() {
               <Route path="/people/:userSlug" element={<HomeUserDetails />} />
               <Route path="/profileCard" element={<ProfileCard />} />
               <Route path="/chat" element={<Chat />} />
+              <Route path="/chat/survey-results" element={<SurveyResults />} />
               <Route path="/inbox" element={<ChatInbox />} />
               <Route path="/bucket" element={<Bucket />} />
               <Route path="/profileview" element={<ProfileView />} />

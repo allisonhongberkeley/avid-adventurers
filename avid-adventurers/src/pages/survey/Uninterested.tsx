@@ -8,7 +8,7 @@ import { useSurvey } from '../../utils/surveyContext';
 
 const Uninterested: React.FC = () => {
     const navigate = useNavigate();
-    const { experience, setExperience } = useSurvey();
+    const { uninterestedReason, setUninterestedReason } = useSurvey();
 
     const handleContinue = () => {
       navigate('/survey/confirmation');
@@ -30,9 +30,9 @@ const Uninterested: React.FC = () => {
         <LabeledInput
           label="Tell us what went wrong."
           placeholder="Type your thoughts here..."
-          value={experience}
+          value={ uninterestedReason }
           multiline={true}
-          onChange={(e) => setExperience(e.target.value)}
+          onChange={(e) => setUninterestedReason(e.target.value)}
         />
         <ProgressBar totalSteps={3} currentStep={2} />
         <ButtonRow style={{ maxWidth: '350px' }}>

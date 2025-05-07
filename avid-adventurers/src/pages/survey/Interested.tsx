@@ -13,7 +13,7 @@ const capFirst = (string: string) => {
 const Interested: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { friendProfileImage, friendName, friendInterests, activity, interests, rating, setRating, updateInterests, setProfileImage } = useSurvey();
+    const { friendName, activity } = useSurvey();
 
     const [selected, setSelected] = useState("Try Something New");
 

@@ -33,8 +33,8 @@ const Profile: React.FC = () => {
           onChange={(e) => setFirstName(e.target.value)}
         />
         <LabeledInput
-          label="Please enter the city you live in:"
-          placeholder="San Francisco"
+          label="Please enter the neighborhood you live in:"
+          placeholder="North Beach"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />

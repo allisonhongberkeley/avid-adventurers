@@ -10,7 +10,7 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 
 const Rate: React.FC = () => {
     const navigate = useNavigate();
-    const { rating, setRating, experience, setExperience } = useSurvey();
+    const { rating, setRating, ratingExperience, setRatingExperience } = useSurvey();
 
     const handleContinue = () => {
       navigate('/survey/rated');
@@ -30,9 +30,9 @@ const Rate: React.FC = () => {
         <LabeledInput
           label="Why?"
           placeholder="Type your thoughts here..."
-          value={experience}
+          value={ratingExperience}
           multiline={true}
-          onChange={(e) => setExperience(e.target.value)}
+          onChange={(e) => setRatingExperience(e.target.value)}
         />
         <ProgressBar totalSteps={3} currentStep={1} />
         <ButtonRow style={{ maxWidth: '350px' }}>

@@ -149,7 +149,7 @@ export const BackgroundWrapper = styled.div`
 `;
 
 export const PhoneContainer = styled.div`
-  width: 400px;
+  width: 100%;
   min-height: 100vh;
   background-image: url('https://cdn.pixabay.com/animation/2024/05/02/07/43/07-43-00-535_512.gif');
   background-size: cover;

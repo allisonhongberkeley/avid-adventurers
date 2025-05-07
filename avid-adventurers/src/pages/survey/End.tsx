@@ -8,10 +8,14 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 const End: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { friendProfileImage, friendName, friendInterests, activity, interests, rating, setRating, updateInterests, setProfileImage } = useSurvey();
+    const selectedTags: string[] = location.state?.selectedTags || [];
+    const { friendName } = useSurvey();
     const previousPage = (location.state as { from?: string })?.from || '/survey/interested';
     const handleDone = () => {
-      navigate('/home');
+        const filteredTags = selectedTags.filter(tag => tag !== 'skateboarding');
+        navigate('/chat/survey-results', {
+            state: { selectedTags: filteredTags },
+        });
     };
 
     const handleBack = () => {

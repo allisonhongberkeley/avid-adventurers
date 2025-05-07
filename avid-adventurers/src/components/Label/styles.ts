@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   padding: 20px;
   border: 2px solid black;
   border-radius: 0.5rem;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
 `;
 
 export const StyledLabel = styled.h1`
