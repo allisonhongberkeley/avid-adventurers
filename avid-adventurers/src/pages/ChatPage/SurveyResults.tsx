@@ -44,8 +44,7 @@ const SurveyResults: React.FC = () => {
                 <LeftMessageRow>
                     <AIIcon>AI</AIIcon>
                     <UserMessageBubble>
-                        You and Tyler are both interested in seeing each other again.
-                        Strike up the conversation about {randomTag}!
+                        What a fun hangout! You are both interested in {randomTag} together - strike up a new conversation!
                     </UserMessageBubble>
                 </LeftMessageRow>
             </MessageArea>

@@ -12,7 +12,11 @@ const End: React.FC = () => {
     const { friendName } = useSurvey();
     const previousPage = (location.state as { from?: string })?.from || '/survey/interested';
     const handleDone = () => {
-        const filteredTags = selectedTags.filter(tag => tag !== 'skateboarding');
+        const filteredTags = selectedTags.filter(tag => tag !== 'skateboarding').map(tag => {
+            if (tag === 'football') return 'playing football';
+            if (tag === 'pickleball') return 'playing pickleball';
+            return tag;
+        });
         navigate('/chat/survey-results', {
             state: { selectedTags: filteredTags },
         });
