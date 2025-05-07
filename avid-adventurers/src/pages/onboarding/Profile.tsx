@@ -14,10 +14,6 @@ const Profile: React.FC = () => {
       navigate('/onboarding/age');
     };
 
-    const handleBack = () => {
-      navigate('/');
-    }
-
     return (
     <Container>
       <FormWrapper>
@@ -40,7 +36,6 @@ const Profile: React.FC = () => {
         />
         <ProgressBar totalSteps={3} currentStep={1} />
         <ButtonRow>
-          <BackButton onClick={handleBack}>Back</BackButton>
           <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
         </ButtonRow>
       </FormWrapper>
