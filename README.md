@@ -22,7 +22,7 @@
 (4) Run the project: 
 - Open a new terminal window. 
 - `npm start`
-- visit `localhost:3000/home`
+- visit `localhost:3000/onboarding/profile`
 
 (3) and (4) should be running simultaneously in separate windows. 
 
